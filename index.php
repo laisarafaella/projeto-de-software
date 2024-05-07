@@ -147,7 +147,7 @@
     <div style="max-width: 960px; margin: 0 auto;">
     <ul style="display: flex; justify-content:space-between; list-style: none;">
         <li style="margin-right: 20px;">
-            <a style="text-decoration: none;" href="{{ route('home') }}">HOME</a>
+            <a style="text-decoration: none;">HOME</a>
         </li>
         <li style="margin-right: 20px;">
             <a style="text-decoration: none;">SOBRE</a>
