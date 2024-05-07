@@ -159,7 +159,8 @@
             <a style="text-decoration: none;">PROGRAMAS</a>
         </li>
         <li>
-            <button class="login">LOGIN</button>
+            <!--<button class="login">LOGIN</button>-->
+            <a style="text-decoration: none;" class="btnlogin" href="registro.php">LOGIN</a>
         </li>
         </ul>
     </div>
@@ -195,9 +196,7 @@
         </div>
     </div>
     </header>
-<div style="max-width: 960px; margin: 20px auto;">
-    @yield('content')
-</div>
+
 
 </body>
 </html>
