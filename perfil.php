@@ -48,22 +48,44 @@
         }
 
 // Consulta SQL para selecionar os dados
-$sql = "SELECT nome, sobrenome, email, data_nascimento FROM usuarios";
-$result = $conexao->query($sql);
+    session_start();
+    $email = $_SESSION['usuario'];
+    $sql = "SELECT * FROM usuarios WHERE email='$email'";
+    $result = $conexao->query($sql);
 
-if ($result->num_rows > 0) {
-    // Exibe os dados de cada linha
-    while($row = $result->fetch_assoc()) {
-        echo "Nome: " . $row["nome"]. " " . $row["sobrenome"]. "<br>";
-        echo "Email: " . $row["email"]. "<br>";
-        echo "Data de Nascimento: " . $row["data_nascimento"]. "<br><br>";
+    if ($result->num_rows > 0) {
+        $usuario = $result->fetch_assoc();
+        echo "<p><strong>Nome:</strong> " . $usuario['nome'] . " " . $usuario['sobrenome'] . "</p>";
+        echo "<p><strong>E-mail:</strong> " . $usuario['email'] . "</p>";
+        echo "<p><strong>Data de Nascimento:</strong> " . $usuario['data_nascimento'] . "</p>";
+    } else {
+        echo "Nenhuma informação de usuário encontrada!";
     }
-} else {
-    echo "Nenhuma informação encontrada!";
-}
 
-// Fecha a conexão
-$conexao->close();
-?>
+     // Exibir campos adicionais se preenchidos pelo usuário
+     if (!empty($usuario['telefone'])) {
+        echo "<p><strong>Telefone:</strong> " . $usuario['telefone'] . "</p>";
+    }
+    if (!empty($usuario['cpf'])) {
+        echo "<p><strong>CPF:</strong> " . $usuario['cpf'] . "</p>";
+    }
+    if (!empty($usuario['endereco'])) {
+            echo "<p><strong>Endereço:</strong> " . $usuario['endereco'] . "</p>";
+    }
+    if (!empty($usuario['cep'])) {
+        echo "<p><strong>CEP:</strong> " . $usuario['cep'] . "</p>";
+    }
+    if (!empty($usuario['interesses'])) {
+        echo "<p><strong>Interesses Esportivos:</strong> " . $usuario['interesses'] . "</p>";
+    }
 
-<a href="index.php">Voltar para a página inicial</a>
+    // Fecha a conexão
+    $conexao->close();
+    ?>
+
+    <p><a href="editar_perfil.php">Editar Perfil</a></p> <!-- ir pra página de editar o perfil -->
+    <p><a href="index.php">Voltar para a página inicial</a></p> <!-- voltar pra página inicial -->
+    </div>
+
+</body>
+</html>
