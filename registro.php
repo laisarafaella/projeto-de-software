@@ -50,6 +50,13 @@
         background-color: #005F81;
     }
 
+    #voltar {
+        font-size: 16px;
+        text-decoration: none;
+        color: #007EA7;
+        font-weight: bold;
+    }
+
 </style>
 </head>
 <body>
@@ -62,7 +69,14 @@
         <input type="password" name="senha" placeholder="Senha" required><br>
         <input type="date" name="data_nascimento" required><br>
         <button type="submit">Cadastrar</button>
+        <div class="voltar">
+            <a href="login.php" id="voltar">Já possuo conta</a>
+        </div>
+        <div class="voltar"><br>
+            <a href="index.php" id="voltar">Voltar para a página inicial</a>
+        </div>
     </form>
 
 </body>
 </html>
+

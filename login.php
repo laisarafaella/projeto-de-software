@@ -48,6 +48,32 @@
         background-color: #005F81;
     }
 
+    #esqueci {
+        font-size: 16px;
+        text-decoration: none;
+        color: #007EA7;
+        font-weight: bold;
+    }
+
+    #volta {
+        font-size: 16px;
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+    }
+
+    .voltar {
+        background-color: #007EA7;
+        height: 30px;
+        text-decoration: none;
+        border-radius: 50px;
+    }
+    
+
+    .esqueci {
+        text-align: center;
+    }
+
     </style>
 </head>
 <body>
@@ -56,6 +82,14 @@
         <input type="email" name="email" placeholder="E-mail" required><br>
         <input type="password" name="senha" placeholder="Senha" required><br>
         <button type="submit">Entrar</button>
+        <div class="esqueci">
+            <a href="esqueci_senha.php" id="esqueci">Esqueci a senha</a><br><br>
+            <div class="voltar">
+                <button id="volta">
+                    <a href="index.php" id="volta">Voltar para a página inicial</a>
+                </button>
+            </div>
+        </div>
     </form>
 
 </body>

@@ -13,7 +13,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
         <style>
             body {
-                padding: 4px;
+                padding: 2px;
                 font-family: "Inter", sans-serif;
                 font-optical-sizing: auto;
                 font-weight: <weight>;
@@ -31,6 +31,11 @@
             nav {
                 border-bottom: 0.1px solid #D3D3D3;
             }
+
+            nav ul {
+                margi
+            }
+
             .texto_img {
                 margin-top: 100px;
                 display: flex;
@@ -146,22 +151,25 @@
 <nav id="cabeçalho">
     <div style="max-width: 960px; margin: 0 auto;">
     <ul style="display: flex; justify-content:space-between; list-style: none;">
-        <li style="margin-right: 20px;">
+        <li style="margin-right: 20px; font-size: 25px ">
+            <a style="text-decoration: none;">SPORTSYNC</a>
+        </li>
+        <li style="margin-right: 20px; margin-top: 20px; ">
             <a style="text-decoration: none;">HOME</a>
         </li>
-        <li style="margin-right: 20px;">
+        <li style="margin-right: 20px; margin-top: 20px; ">
             <a style="text-decoration: none;">SOBRE</a>
         </li>
-         <li>
+         <li style="margin-top: 20px; ">
             <a style="text-decoration: none;">CONTATO</a>
         </li>
-        <li>
+        <li style="margin-top: 20px; ">
             <a style="text-decoration: none;">PROGRAMAS</a>
         </li>
-        <li>
-            <a style="text-decoration: none;" class="login" href="registro.php">LOGIN</a>
+        <li style="margin-top: 20px; ">
+            <a style="text-decoration: none;" class="login" href="registro.php">CRIAR CONTA</a>
         </li>
-        <li>
+        <li style="margin-top: 20px; ">
             <a style="text-decoration: none;" class="login" href="perfil.php">PERFIL</a>
         </li>
         </ul>
@@ -172,7 +180,7 @@
     <div class="texto">Descubra uma nova forma de ajudar! Conheça nosso site, onde cada compra gera impacto.
         <br><br><button id="conheça">CONHEÇA</button>       
     </div>
-    <img id="imagem" src="https://s3-alpha-sig.figma.com/img/e99b/513c/f23c08642e74aefe14e44f05b7f5ab82?Expires=1716163200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=iFsXSaiY0gROd0h11BDsdpbPErDg8~iE4Dv~cPXILWj0LY6baLGRwaGPI33T47NF1Al3qFEl~wijFwx4sy2R5Vx4JfluLpADn~GCvybh6E-flZhb3KvHiNgLsqngm4XBFuG0p0yhYqaV~I0pOg66B1wyepkesoBYWKIU7AEXqw5HLVD4lA5i1PIn0mn1b~l~PnL-K87xcQSs1FXVM0vDj8zb8OrXsuKR1uOSLoh5JPpLfBG7yP1dVqgJkflhWCq4vu-SiKOgOliKJy7aTKDFc5Xp2qG7TBA76ztyoGe6limArUzEtiBNFLbvdKkLkQ4An194yrgUGiEa4D-adLRLBw__" alt="">
+    <img id="imagem" src="imagem_mulher.png" alt="">
 </div>
 <div class="div_texto">
     <div class="branco">
