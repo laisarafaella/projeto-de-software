@@ -29,7 +29,8 @@
             margin-bottom: 10px;
         }
         .sai {
-            text-align: center;
+            justify-content: space-evenly;
+            display: flex;
         }
         .sair {
             
@@ -120,7 +121,10 @@ $conexao->close();
         <p><a href="editar_perfil.php" id="editar">Editar Perfil</a></p> <!-- Ir para a página de editar o perfil -->
         <div class="sai">
             <form action="sair_login.php" method="post">
-                <input type="submit" value="Sair" class="sair">
+                <input type="submit" value="Sair Conta" class="sair">
+            </form>
+            <form action="deletar_conta.php" method="post">
+                <input type="submit" name="delete" value="Excluir Conta" class="sair" onclick="return confirm('Tem certeza de que deseja excluir sua conta? Esta ação não pode ser desfeita.');">
             </form>
         </div>
     </div>
