@@ -100,6 +100,15 @@
 
                 <label for="interesses">Interesses Esportivos:</label>
                 <input type="text" id="interesses" name="interesses" maxlength="255" value="<?php echo isset($usuario['interesses']) ? $usuario['interesses'] : ''; ?>">
+
+                <label for="senhaAtual">Senha Atual:</label>
+                <input type="password" id="senhaAtual" name="senhaAtual">
+
+                <label for="senhaNova">Nova Senha:</label>
+                <input type="password" id="senhaNova" name="senhaNova">
+
+                <label for="confirmarSenha">Confirmar Nova Senha:</label>
+                <input type="password" id="confirmarSenha" name="confirmarSenha">
                 
                 <input type="submit" value="Salvar Alterações">
             </form>
