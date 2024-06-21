@@ -1,64 +1,80 @@
 <?php
+// request_password_reset.php
+require 'vendor/autoload.php';
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require 'vendor/autoload.php';  // Inclui o autoload do Composer
-
-// Configuração do banco de dados
+// conectar bd
 $host = "localhost";
 $usuario = "root";
 $senha = "";
 $banco = "teste";
 
-$conexao = new mysqli($host, $usuario, $senha, $banco);
+// Cria a conexão
+$conn = new mysqli($host, $usuario, $senha, $banco);
 
-if ($conexao->connect_error) {
-    die("Erro de conexão: " . $conexao->connect_error);
+// Verifica a conexão
+if ($conn->connect_error) {
+    die("Conexão falhou: " . $conn->connect_error);
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+// Função para obter usuário pelo e-mail
+function getUserByEmail($email) {
+    global $conn;
+    $stmt = $conn->prepare("SELECT * FROM usuarios WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    return $stmt->get_result()->fetch_assoc();
+}
+
+// Função para salvar token de redefinição de senha
+function savePasswordResetToken($userId, $token) {
+    global $conn;
+    $expiry = date('Y-m-d H:i:s', strtotime('+1 hour'));
+    $stmt = $conn->prepare("UPDATE usuarios SET token_reset = ?, token_reset_expiracao = ? WHERE id = ?");
+    $stmt->bind_param("ssi", $token, $expiry, $userId);
+    $stmt->execute();
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
-    $sql = "SELECT id FROM usuarios WHERE email='$email'";
-    $result = $conexao->query($sql);
+    $user = getUserByEmail($email);
 
-    if ($result->num_rows > 0) {
-        $reset_code = rand(100000, 999999);
-        $sql = "UPDATE usuarios SET reset_code='$reset_code' WHERE email='$email'";
-        if ($conexao->query($sql) === TRUE) {
-            $mail = new PHPMailer(true);
-            try {
-                //Configurações do servidor
-                $mail->isSMTP();
-                $mail->Host       = 'smtp.gmail.com';
-                $mail->SMTPAuth   = true;
-                $mail->Username   = 'your-email@gmail.com';
-                $mail->Password   = 'your-email-password';
-                $mail->SMTPSecure = 'tls';
-                $mail->Port       = 587;
+    if ($user) {
+        $token = bin2hex(random_bytes(16));
+        savePasswordResetToken($user['id'], $token);
+        sendPasswordResetEmail($email, $token);
+    }
 
-                //Destinatários
-                $mail->setFrom('your-email@gmail.com', 'Seu Nome');
-                $mail->addAddress($email);
+    echo 'um link para redefinir sua senha foi enviado.';
+}
 
-                //Conteúdo
-                $mail->isHTML(true);
-                $mail->Subject = 'Código de Recuperação de Senha';
-                $mail->Body    = "Seu código de recuperação de senha é: $reset_code";
+function sendPasswordResetEmail($email, $token) {
+    $resetLink = "http://localhost/projeto-de-software/senha_reset.php?token=$token";
+    
+    $mail = new PHPMailer(true);
+    try {
+        $mail->isSMTP();
+        $mail->Host = 'smtp-mail.outlook.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'testeprojdesoftware@outlook.com';
+        $mail->Password = 'ProjDeSoftware';
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port = 587;
 
-                $mail->send();
-                echo "Código enviado com sucesso.";
-            } catch (Exception $e) {
-                echo "Falha ao enviar o email. Mailer Error: {$mail->ErrorInfo}";
-            }
-        } else {
-            echo "Erro ao atualizar o código: " . $conexao->error;
-        }
-    } else {
-        echo "Email não encontrado.";
+        $mail->setFrom('testeprojdesoftware@outlook.com', 'Davi Pimenta');
+        $mail->addAddress($email);
+
+        $mail->isHTML(true);
+        $mail->Subject = 'Redefinição de Senha';
+        $mail->Body    = "Clique no link a seguir para redefinir sua senha: <a href='$resetLink'>$resetLink</a>";
+        $mail->AltBody = "Clique no link a seguir para redefinir sua senha: $resetLink";
+
+        $mail->send();
+        echo 'Mensagem enviada, ';
+    } catch (Exception $e) {
+        echo "Falha ao enviar o e-mail. Mailer Error: {$mail->ErrorInfo}";
     }
 }
-
-$conexao->close();
 ?>
-<p><a href="esqueci_senha.php">Voltar</a></p>
-
