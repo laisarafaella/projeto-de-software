@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -7,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil do Usuário</title>
     <style>
-         body {
+        body {
             background-color: #007EA7;
             font-family: "Inter", sans-serif;
             margin: 0;
@@ -33,7 +31,6 @@
             display: flex;
         }
         .sair {
-            
             background-color: #007EA7; 
             border: 3px solid #153870;
             color: #153870; 
@@ -50,11 +47,11 @@
             transition: 0.9s;
         }
         #editar {
-        font-size: 16px;
-        text-decoration: none;
-        color: #007EA7;
-        font-weight: bold;
-    }
+            font-size: 16px;
+            text-decoration: none;
+            color: #007EA7;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -93,6 +90,13 @@ if ($result->num_rows > 0) {
     echo "<p><strong>Nome:</strong> " . $usuario['nome'] . " " . $usuario['sobrenome'] . "</p>";
     echo "<p><strong>E-mail:</strong> " . $usuario['email'] . "</p>";
     echo "<p><strong>Data de Nascimento:</strong> " . $usuario['data_nascimento'] . "</p>";
+
+    // Exibir o tipo de usuário
+    if (!empty($usuario['tipo_usuario'])) {
+        echo "<p><strong>Tipo de Usuário:</strong> " . ucfirst($usuario['tipo_usuario']) . "</p>";
+    } else {
+        echo "<p><strong>Tipo de Usuário:</strong> Não especificado</p>";
+    }
 
     // Exibir campos adicionais se preenchidos pelo usuário
     if (!empty($usuario['telefone'])) {

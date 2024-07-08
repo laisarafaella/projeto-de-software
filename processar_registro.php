@@ -1,5 +1,5 @@
 <?php
-// conectar ao banco de dados
+// Conectar ao banco de dados
 $host = "localhost";
 $usuario = "root";
 $senha = "";
@@ -7,29 +7,36 @@ $banco = "teste";
 
 $conexao = new mysqli($host, $usuario, $senha, $banco);
 
-// verificar a conexão
+// Verificar a conexão
 if ($conexao->connect_error) {
     die("Erro de conexão: " . $conexao->connect_error);
 }
 
-// obter os dados do form
+// Obter os dados do formulário
 $nome = $_POST['nome'];
 $sobrenome = $_POST['sobrenome'];
 $email = $_POST['email'];
-$senha = password_hash($_POST['senha'], PASSWORD_DEFAULT); // criptografar a senha
+$senha = password_hash($_POST['senha'], PASSWORD_DEFAULT); // Criptografar a senha
 $data_nascimento = $_POST['data_nascimento'];
+$tipo_usuario = $_POST['tipo_usuario'];
 
-// prepara e executar a consulta sql
-$sql = "INSERT INTO usuarios (nome, sobrenome, email, senha, data_nascimento) VALUES ('$nome', '$sobrenome', '$email', '$senha', '$data_nascimento')";
+// Preparar e executar a consulta SQL para inserir usuário
+$sql = "INSERT INTO usuarios (nome, sobrenome, email, senha, data_nascimento, tipo_usuario) VALUES ('$nome', '$sobrenome', '$email', '$senha', '$data_nascimento', '$tipo_usuario')";
 
 if ($conexao->query($sql) === TRUE) {
-    session_start();
-    $_SESSION['usuario'] = $email;
-    header("Location: login.php"); // redirecionar para a página de login após o registro
+    // Após o registro, redirecionar para página específica dependendo do tipo de usuário
+    if ($tipo_usuario == 'cliente') {
+        header("Location: pagina_cliente.php");
+    } elseif ($tipo_usuario == 'sócio') {
+        header("Location: pagina_socio.php");
+    } else {
+        // Caso nenhum tipo específico seja definido, redirecionar para página padrão
+        header("Location: index.php");
+    }
 } else {
     echo "Erro ao registrar usuário: " . $conexao->error;
 }
 
-// fechar a conexão
+// Fechar a conexão
 $conexao->close();
 ?>
