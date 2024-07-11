@@ -166,6 +166,44 @@
             .pesquisa {
                 margin-left: 300px;
             }
+
+            .container-ranking {
+            
+            margin: auto;
+            width: 70%;
+            height: 400px;
+    
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+
+            color: white;
+        }
+
+        .container-ranking h1 {
+            font-size: 40px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .container-ranking a {
+            text-decoration: none;
+            color: white;
+            font-size: 24px;
+            background-color: #003E92;
+            border-radius: 30px;
+            padding: 15px 40px;
+            border: none;
+            margin-top: 20px;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .container-ranking a:hover {
+            transform: scale(1.05);
+            background-color: #002A5D;
+            cursor: pointer;
+        }
         </style>
     </head>
 </head>
@@ -213,6 +251,14 @@
             </div>
         </div>
     </div>
+
+    <div class="container-ranking">
+        <div>
+            <h1>Conheça nosso <span>ranking</span> de atletas e instituições mais necessitados!</h1>
+            <a href="ranking.php">Ver Ranking</a>
+        </div>
+    </div>
+
     <header class="final">
         <div class="logo"></div>
         <div class="conteudo1">
