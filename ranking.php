@@ -487,7 +487,7 @@ if (file_exists($arquivo_json)) {
                 echo '<h2>' . $atleta['nome'] . '</h2>';
                 echo '<p>Categoria: ' . $atleta['categoria'] . '</p>';
                 echo '<p>Necessidade: ' . $atleta['necessidade'] . '</p>';
-                echo '<a href="saiba_mais_ranking.php?id=' . $atleta['id'] . '"><button>Saiba mais</button></a>';
+                echo '<a href="saibaMais_ranking.php?id=' . $atleta['id'] . '"><button>Saiba mais</button></a>';
                 echo '</div>';
             }
             ?>

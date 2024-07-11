@@ -204,6 +204,56 @@
             background-color: #002A5D;
             cursor: pointer;
         }
+
+        .planos-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .plano {
+            background-color: #002f7a;
+            padding: 20px;
+            border-radius: 10px;
+            width: 250px;
+        }
+
+        .plano h2 {
+            background-color: #0056b3;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .plano ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .plano li {
+            background-color: #FFFFFF;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+        }
+
+        .plano button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .plano button:hover {
+            background-color: #007EA7;
+        }
+
         </style>
     </head>
 </head>
@@ -257,6 +307,48 @@
             <h1>Conheça nosso <span>ranking</span> de atletas e instituições mais necessitados!</h1>
             <a href="ranking.php">Ver Ranking</a>
         </div>
+    </div>
+
+    <div class="planos-container">
+        <?php
+            $planos = [
+                [
+                    "nome" => "Categoria 1",
+                    "beneficios" => [
+                        "Taxa de adesão única: R$ 5,00",
+                        "Descontos: Sim",
+                        "Pontuação: x1.5",
+                        "Conteúdos exclusivos: Sim",
+                        "Valor mensal: R$ 15,00"
+                    ]
+                ],
+                [
+                    "nome" => "Categoria 2",
+                    "beneficios" => [
+                        "Taxa de adesão única: R$ 10,00",
+                        "Descontos: Sim",
+                        "Pontuação: x2.0",
+                        "Conteúdos exclusivos: Sim",
+                        "Valor mensal: R$ 30,00"
+                    ]
+                ]
+            ];
+
+            foreach ($planos as $plano) {
+                echo "<div class='plano'>";
+                echo "<h2>{$plano['nome']}</h2>";
+                echo "<ul>";
+                foreach ($plano['beneficios'] as $beneficio) {
+                    echo "<li>$beneficio</li>";
+                }
+                echo "</ul>";
+                echo "<form action='pagamento.php' method='GET'>";
+                echo "<input type='hidden' name='plano' value='{$plano['nome']}'>";
+                echo "<button type='submit'>Quero ser sócio</button>";
+                echo "</form>";
+                echo "</div>";
+            }
+        ?>
     </div>
 
     <header class="final">
