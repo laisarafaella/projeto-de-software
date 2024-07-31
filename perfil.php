@@ -130,6 +130,9 @@ $conexao->close();
             <form action="deletar_conta.php" method="post">
                 <input type="submit" name="delete" value="Excluir Conta" class="sair" onclick="return confirm('Tem certeza de que deseja excluir sua conta? Esta ação não pode ser desfeita.');">
             </form>
+            <form action="quiz.php" method="post">
+                <input type="submit" name="quiz" value="Quiz de interesses" class="sair">
+            </form>
         </div>
     </div>
 </body>

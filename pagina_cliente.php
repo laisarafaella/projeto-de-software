@@ -32,13 +32,31 @@
             color: #007EA7;
             font-weight: bold;
         }
+        .sair {
+            background-color: #007EA7; 
+            border: 3px solid #153870;
+            color: #153870; 
+            font-weight: bold;
+            padding: 5px 20px; 
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color: #007EA7 0.3s, color 0.3s;
+        }
+        .sair:hover {
+            background-color: white; 
+            color: #153870; 
+            border-color: #153870;
+            transition: 0.9s;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h2>Página do Cliente</h2>
         <p>Bem-vindo, Cliente!</p>
-        <!-- Conteúdo específico para clientes -->
+        <form action="sair_login.php" method="post">
+            <input type="submit" value="Sair Conta" class="sair">
+        </form>
         <p><a href="index.php" id="editar">Voltar para a página inicial</a></p>
     </div>
 </body>
