@@ -304,8 +304,9 @@
 
     <div class="container-ranking">
         <div>
-            <h1>Conheça nosso <span>ranking</span> de atletas e instituições mais necessitados!</h1>
+            <h1>Conheça nosso <span>ranking</span> de atletas e instituições mais necessitados! E também conheça nossa loja!</h1>
             <a href="ranking.php">Ver Ranking</a>
+            <a href="shop.php">Acessar Loja de Pontos</a>
         </div>
     </div>
 
