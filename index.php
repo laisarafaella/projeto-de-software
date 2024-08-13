@@ -9,17 +9,17 @@
         <title> Site Esportivo </title>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
-            rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
         <style>
             body {
-                padding: 2px;
+                margin: 0;
+                padding: 0;
+
                 font-family: "Inter", sans-serif;
                 font-optical-sizing: auto;
-                font-weight: <weight>;
                 font-style: normal;
                 font-variation-settings: "slnt" 0;
                 background-color: #007EA7;
@@ -36,9 +36,6 @@
                 border-bottom: 0.1px solid #D3D3D3;
             }
 
-            nav ul {
-                margi
-            }
 
             .texto_img {
                 margin-top: 100px;
@@ -78,6 +75,10 @@
                 color: black;
             }
 
+            .contato {
+                color: #fff;
+            }
+
             #conheça {
                 background-color: transparent;
                 border: 2px solid white;
@@ -113,6 +114,7 @@
                 background-color: white;
                 border-radius: 15px;
             }
+            
 
             .final {
                 margin-top: 200px;
@@ -131,6 +133,7 @@
 
             .conteudo {
                 padding: 20px;
+                margin-bottom: 20px;
                 font-weight: bold;
             }
 
@@ -272,7 +275,7 @@
                     <a style="text-decoration: none;">SOBRE</a>
                 </li>
                 <li style="margin-top: 20px; ">
-                    <a style="text-decoration: none;">CONTATO</a>
+                    <a style="text-decoration: none;" class="contato" href="contato.php">CONTATO</a>
                 </li>
                 <li style="margin-top: 20px; ">
                     <a style="text-decoration: none;">PROGRAMAS</a>
@@ -352,13 +355,14 @@
         ?>
     </div>
 
-    <header class="final">
+    <footer class="final">
         <div class="logo"></div>
         <div class="conteudo1">
-            política de privacidade <br> diretrizes da comunidade
+            <a href="politicaPrivacidade.php">Política de Privacidade</a>
+            <br> Termos de Uso <br> Diretrizes da comunidade
         </div>
         <div class="conteudo">
-            serviços<br> seja um colaborador
+            Serviços <br> Seja um colaborador
         </div>
         <div class="pesquisa">
             <h3>Fique por dentro</h3>
@@ -368,9 +372,8 @@
                 </button>
             </div>
         </div>
-    </header>
+    </footer>
 
 
 </body>
-
 </html>
