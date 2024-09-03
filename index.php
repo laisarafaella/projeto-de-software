@@ -275,10 +275,6 @@
                     <a style="text-decoration: none;">SOBRE</a>
                 </li>
 
-                <li style="margin-right: 20px; margin-top: 20px; ">
-                    <a style="text-decoration: none;" href="faq.php">FAQ</a>
-                </li>
-
                 <li style="margin-top: 20px; ">
                     <a style="text-decoration: none;" class="contato" href="contato.php">CONTATO</a>
                 </li>
@@ -367,6 +363,9 @@
             <br> Termos de Uso <br> Diretrizes da comunidade
         </div>
         <div class="conteudo">
+            <li style="margin-right: 20px; margin-top: 20px; list-style: none;">
+                <a style="text-decoration: none;" href="faq.php">FAQ</a>
+            </li>
             Serviços <br> Seja um colaborador
         </div>
         <div class="pesquisa">
