@@ -90,6 +90,7 @@ if ($result->num_rows > 0) {
     echo "<p><strong>Nome:</strong> " . $usuario['nome'] . " " . $usuario['sobrenome'] . "</p>";
     echo "<p><strong>E-mail:</strong> " . $usuario['email'] . "</p>";
     echo "<p><strong>Data de Nascimento:</strong> " . $usuario['data_nascimento'] . "</p>";
+    echo "<p><strong>Foto de Perfil:</strong>" .$usuario['foto_perfil'] . "</p>";
 
     // Exibir o tipo de usuário
     if (!empty($usuario['tipo_usuario'])) {
