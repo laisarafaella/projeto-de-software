@@ -90,7 +90,6 @@ if ($result->num_rows > 0) {
     echo "<p><strong>Nome:</strong> " . $usuario['nome'] . " " . $usuario['sobrenome'] . "</p>";
     echo "<p><strong>E-mail:</strong> " . $usuario['email'] . "</p>";
     echo "<p><strong>Data de Nascimento:</strong> " . $usuario['data_nascimento'] . "</p>";
-    echo "<p><strong>Foto de Perfil:</strong>" .$usuario['foto_perfil'] . "</p>";
 
     // Exibir o tipo de usuário
     if (!empty($usuario['tipo_usuario'])) {
@@ -118,6 +117,15 @@ if ($result->num_rows > 0) {
 } else {
     echo "Nenhuma informação de usuário encontrada!";
 }
+
+// Conectar ao banco de dados e obter o caminho da imagem do usuário
+$foto_perfil = 'uploads/Imagem do WhatsApp de 2024-03-19 à(s) 13.09.07_50c4523b.jpg'; // Exemplo de caminho da imagem
+
+// Exibir a imagem no perfil do usuário
+echo '<h3>Foto de Perfil:</h3>';
+echo '<img src="' . htmlspecialchars($foto_perfil) . '" alt="Foto de Perfil" style="max-width:200px; max-height:200px;">';
+
+
 
 // Fecha a conexão
 $conexao->close();
