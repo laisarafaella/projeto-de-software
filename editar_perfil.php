@@ -27,7 +27,7 @@
             display: block;
             margin-bottom: 10px;
         }
-        input[type="text"], input[type="email"], input[type="password"], input[type="date"] {
+        input[type="text"], input[type="email"], input[type="password"], input[type="date"], input[type="file"] {
             width: 85%;
             padding: 10px;
             margin-bottom: 20px;
@@ -59,12 +59,12 @@
 
         $conexao = new mysqli($host, $usuario, $senha, $banco);
 
-        // conexao
+        // Verificar conexão
         if ($conexao->connect_error) {
             die("Erro de conexão: " . $conexao->connect_error);
         }
 
-        // obter informações do usuário
+        // Obter informações do usuário
         session_start();
         $email = $_SESSION['usuario'];
         $sql = "SELECT * FROM usuarios WHERE email='$email'";
@@ -73,7 +73,7 @@
         if ($resultado->num_rows > 0) {
             $usuario = $resultado->fetch_assoc();
             ?>
-            <form action="atualizar_perfil.php" method="post">
+            <form action="atualizar_perfil.php" method="post" enctype="multipart/form-data">
                 <label for="nome">Nome:</label>
                 <input type="text" id="nome" name="nome" value="<?php echo $usuario['nome']; ?>">
 
@@ -109,6 +109,9 @@
 
                 <label for="confirmarSenha">Confirmar Nova Senha:</label>
                 <input type="password" id="confirmarSenha" name="confirmarSenha">
+
+                <label for="foto_perfil">Trocar Foto de Perfil:</label>
+                <input type="file" id="foto_perfil" name="foto_perfil" accept="image/*">
                 
                 <input type="submit" value="Salvar Alterações">
             </form>
@@ -117,7 +120,7 @@
             echo "Usuário não encontrado!";
         }
 
-        // fechar a conexão
+        // Fechar a conexão
         $conexao->close();
         ?>
         <p><a href="perfil.php">Voltar para o Perfil</a></p>
