@@ -93,21 +93,12 @@
         $sql = "SELECT * FROM usuarios WHERE email='$email'";
         $result = $conexao->query($sql);
 
-        if ($result->num_rows > 0) {
-            $usuario = $result->fetch_assoc();
-
-            // Exibir dados do usuário
-            echo "<p><strong>Nome:</strong> " . $usuario['nome'] . " " . $usuario['sobrenome'] . "</p>";
-            echo "<p><strong>E-mail:</strong> " . $usuario['email'] . "</p>";
-            echo "<p><strong>Data de Nascimento:</strong> " . $usuario['data_nascimento'] . "</p>";
-
-            // Exibir a imagem de perfil, caso exista
-            if (!empty($usuario['foto_perfil'])) {
-                echo '<h3>Foto de Perfil:</h3>';
-                echo '<img src="' . htmlspecialchars($usuario['foto_perfil']) . '" alt="Foto de Perfil" style="max-width:200px; max-height:200px;">';
-            } else {
-                echo '<p><strong>Foto de Perfil:</strong> Não enviada</p>';
-            }
+if ($result->num_rows > 0) {
+    $usuario = $result->fetch_assoc();
+    echo "<p><strong>Nome:</strong> " . $usuario['nome'] . " " . $usuario['sobrenome'] . "</p>";
+    echo "<p><strong>E-mail:</strong> " . $usuario['email'] . "</p>";
+    echo "<p><strong>Data de Nascimento:</strong> " . $usuario['data_nascimento'] . "</p>";
+    echo "<p><strong>Foto de Perfil:</strong>" .$usuario['foto_perfil'] . "</p>";
 
             // Exibir o tipo de usuário
             if (!empty($usuario['tipo_usuario'])) {
@@ -116,26 +107,25 @@
                 echo "<p><strong>Tipo de Usuário:</strong> Não especificado</p>";
             }
 
-            // Exibir campos adicionais se preenchidos pelo usuário
-            if (!empty($usuario['telefone'])) {
-                echo "<p><strong>Telefone:</strong> " . $usuario['telefone'] . "</p>";
-            }
-            if (!empty($usuario['cpf'])) {
-                echo "<p><strong>CPF:</strong> " . $usuario['cpf'] . "</p>";
-            }
-            if (!empty($usuario['endereco'])) {
-                echo "<p><strong>Endereço:</strong> " . $usuario['endereco'] . "</p>";
-            }
-            if (!empty($usuario['cep'])) {
-                echo "<p><strong>CEP:</strong> " . $usuario['cep'] . "</p>";
-            }
-            if (!empty($usuario['interesses'])) {
-                echo "<p><strong>Interesses Esportivos:</strong> " . $usuario['interesses'] . "</p>";
-            }
-
-        } else {
-            echo "Nenhuma informação de usuário encontrada!";
-        }
+    // Exibir campos adicionais se preenchidos pelo usuário
+    if (!empty($usuario['telefone'])) {
+        echo "<p><strong>Telefone:</strong> " . $usuario['telefone'] . "</p>";
+    }
+    if (!empty($usuario['cpf'])) {
+        echo "<p><strong>CPF:</strong> " . $usuario['cpf'] . "</p>";
+    }
+    if (!empty($usuario['endereco'])) {
+        echo "<p><strong>Endereço:</strong> " . $usuario['endereco'] . "</p>";
+    }
+    if (!empty($usuario['cep'])) {
+        echo "<p><strong>CEP:</strong> " . $usuario['cep'] . "</p>";
+    }
+    if (!empty($usuario['interesses'])) {
+        echo "<p><strong>Interesses Esportivos:</strong> " . $usuario['interesses'] . "</p>";
+    }
+} else {
+    echo "Nenhuma informação de usuário encontrada!";
+}
 
         // Fecha a conexão
         $conexao->close();

@@ -43,12 +43,11 @@ if (isset($_FILES['arquivo']) && $_FILES['arquivo']['error'] == UPLOAD_ERR_OK) {
         die("Somente arquivos JPG, JPEG, PNG e GIF são permitidos.");
     }
 
-    // Mover o arquivo para o diretório de uploads
-    if (!move_uploaded_file($_FILES['arquivo']['tmp_name'], $caminho_arquivo)) {
-        die("Erro ao enviar o arquivo.");
-    }
+// Tentativa de mover o arquivo carregado para o diretório de uploads
+if (move_uploaded_file($_FILES['arquivo']['tmp_name'], $caminho_arquivo)) {
+    echo "O arquivo ". htmlspecialchars($nome_arquivo). " foi enviado com sucesso.";
 } else {
-    $caminho_arquivo = null;  // Caso não tenha imagem, podemos definir um valor nulo ou uma imagem padrão.
+    die("Desculpe, houve um erro ao enviar o arquivo.");
 }
 
 // Obter os dados do formulário
@@ -63,8 +62,8 @@ $tipo_usuario = $conexao->real_escape_string($_POST['tipo_usuario']);
 $sql = $conexao->prepare("INSERT INTO usuarios (nome, sobrenome, email, senha, data_nascimento, tipo_usuario, foto_perfil) VALUES (?, ?, ?, ?, ?, ?, ?)");
 $sql->bind_param("sssssss", $nome, $sobrenome, $email, $senha, $data_nascimento, $tipo_usuario, $caminho_arquivo);
 
-if ($sql->execute()) {
-    // Redirecionar dependendo do tipo de usuário
+if ($conexao->query($sql) === TRUE) {
+    // Após o registro, redirecionar para página específica dependendo do tipo de usuário
     if ($tipo_usuario == 'cliente') {
         header("Location: pagina_cliente.php");
         exit();
