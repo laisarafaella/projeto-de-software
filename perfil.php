@@ -98,7 +98,14 @@ if ($result->num_rows > 0) {
     echo "<p><strong>Nome:</strong> " . $usuario['nome'] . " " . $usuario['sobrenome'] . "</p>";
     echo "<p><strong>E-mail:</strong> " . $usuario['email'] . "</p>";
     echo "<p><strong>Data de Nascimento:</strong> " . $usuario['data_nascimento'] . "</p>";
-    echo "<p><strong>Foto de Perfil:</strong>" .$usuario['foto_perfil'] . "</p>";
+    // Verificar se há uma foto de perfil
+if (!empty($usuario['foto_perfil'])) {
+    echo "<p><strong>Foto de Perfil:</strong></p>";
+    echo "<img src='" . $usuario['foto_perfil'] . "' alt='Foto de Perfil' style='width:150px; height:auto;'>";
+} else {
+    echo "<p><strong>Foto de Perfil:</strong> Nenhuma foto enviada.</p>";
+}
+
 
             // Exibir o tipo de usuário
             if (!empty($usuario['tipo_usuario'])) {

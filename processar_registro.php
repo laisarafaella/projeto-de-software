@@ -43,11 +43,10 @@ if (isset($_FILES['arquivo']) && $_FILES['arquivo']['error'] == UPLOAD_ERR_OK) {
         die("Somente arquivos JPG, JPEG, PNG e GIF são permitidos.");
     }
 
-// Tentativa de mover o arquivo carregado para o diretório de uploads
-if (move_uploaded_file($_FILES['arquivo']['tmp_name'], $caminho_arquivo)) {
-    echo "O arquivo ". htmlspecialchars($nome_arquivo). " foi enviado com sucesso.";
-} else {
-    die("Desculpe, houve um erro ao enviar o arquivo.");
+    // Tentativa de mover o arquivo carregado para o diretório de uploads
+    if (!move_uploaded_file($_FILES['arquivo']['tmp_name'], $caminho_arquivo)) {
+        die("Desculpe, houve um erro ao enviar o arquivo.");
+    }
 }
 
 // Obter os dados do formulário
@@ -62,12 +61,12 @@ $tipo_usuario = $conexao->real_escape_string($_POST['tipo_usuario']);
 $sql = $conexao->prepare("INSERT INTO usuarios (nome, sobrenome, email, senha, data_nascimento, tipo_usuario, foto_perfil) VALUES (?, ?, ?, ?, ?, ?, ?)");
 $sql->bind_param("sssssss", $nome, $sobrenome, $email, $senha, $data_nascimento, $tipo_usuario, $caminho_arquivo);
 
-if ($conexao->query($sql) === TRUE) {
+if ($sql->execute()) {
     // Após o registro, redirecionar para página específica dependendo do tipo de usuário
     if ($tipo_usuario == 'cliente') {
         header("Location: pagina_cliente.php");
         exit();
-    } elseif ($tipo_usuario == 'sócio') {
+    } else if ($tipo_usuario == 'sócio') {
         header("Location: pagina_socio.php");
         exit();
     } else {
