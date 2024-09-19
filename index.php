@@ -168,6 +168,7 @@
 
             .pesquisa {
                 margin-left: 300px;
+                height: 300px;
             }
 
             .container-ranking {
@@ -240,7 +241,15 @@
             margin-top: 5px;
             border-radius: 5px;
         }
-
+        .addNFe {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
         .plano button {
             display: block;
             width: 100%;
@@ -311,6 +320,7 @@
             <h1>Conheça nosso <span>ranking</span> de atletas e instituições mais necessitados! E também conheça nossa loja!</h1>
             <a href="ranking.php">Ver Ranking</a>
             <a href="shop.php">Acessar Loja de Pontos</a>
+            <a href="validar_cupom.php">Valide seu desconto!</a>
         </div>
     </div>
 
@@ -372,9 +382,10 @@
             <h3>Fique por dentro</h3>
             <div class="barra-pesquisa">
                 <input type="text" class="campo-pesquisa" placeholder="Pesquisar...">
-                <button type="submit" class="botao-pesquisa">PESQUISAR
-                </button>
+                <button type="submit" class="botao-pesquisa">PESQUISAR</button><br>
+                <a href="criar_codigofiscal.php" class="addNFe">add código fiscal</a>
             </div>
+            
         </div>
     </footer>
 
