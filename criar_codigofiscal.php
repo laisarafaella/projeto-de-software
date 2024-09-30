@@ -12,15 +12,22 @@ try {
     die("Erro na conexão: " . $e->getMessage());
 }
 
+// Nome do usuário (pode ser uma variável de sessão no futuro)
+$nomeUsuario = 'cliente1';
+
 // Verifica o envio do formulário
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $codigoNota = $_POST['codigo_nota'];
 
-    // Insere o código no banco de dados
+    // Insere o código da nota na tabela de notas_fiscais
     $stmt = $pdo->prepare("INSERT INTO notas_fiscais (codigo_nota, usado) VALUES (:codigo, 0)");
     $stmt->execute(['codigo' => $codigoNota]);
 
-    echo "<div class='mensagem'>Código inserido com sucesso!</div>";
+    // Atualiza a quantidade de notas recebidas e pontos na tabela de usuários
+    $stmt = $pdo->prepare("UPDATE usuarios SET notas_recebidas = notas_recebidas + 1, pontos = pontos + 50 WHERE nome = :usuario");
+    $stmt->execute(['usuario' => $nomeUsuario]);
+
+    echo "<div class='mensagem'>Código inserido com sucesso! Você ganhou 50 pontos.</div>";
 }
 ?>
 
@@ -85,7 +92,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <input type="text" id="codigo_nota" name="codigo_nota" required>
 
         <input type="submit" class="btn" value="Adicionar Código">
-        <a id="voltar" href="index.php">página inicial</a>
+        <br>
+        <a href="pagina_pontos.php" class="btn" style="display: inline-block; text-decoration: none;">Ver Pontos</a>
+        <a href="index.php.php" class="btn" style="display: inline-block; text-decoration: none;">Voltar a tela inicial</a>
     </form>
 </div>
 
