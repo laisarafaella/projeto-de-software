@@ -12,6 +12,8 @@ try {
     die("Erro na conexão: " . $e->getMessage());
 }
 
+$mensagem = '';
+
 // Verificação do formulário
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $codigoNota = $_POST['codigo_nota'];
@@ -34,12 +36,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->execute(['id' => $nota['id']]);
 
         if ($acaoCliente == 'usar') {
-            echo "<div class='mensagem'>Você escolheu usar o código! O desconto foi de $percentualDesconto%. O valor final da compra é R$" . number_format($valorFinal, 2, ',', '.') . ".</div>";
+            $mensagem = "<div class='mensagem'>Você escolheu usar o código! O desconto foi de $percentualDesconto%. O valor final da compra é R$" . number_format($valorFinal, 2, ',', '.') . ".</div>";
         } elseif ($acaoCliente == 'doar') {
-            echo "<div class='mensagem'>Você escolheu doar o código de desconto!</div>";
+            $mensagem = "<div class='mensagem'>Você escolheu doar o código de desconto!</div>";
         }
     } else {
-        echo "<div class='mensagem erro'>Código inválido ou já utilizado!</div>";
+        $mensagem = "<div class='mensagem erro'>Código inválido ou já utilizado!</div>";
     }
 }
 ?>
@@ -146,6 +148,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <button type="submit" class="btn">Validar Código</button>
     </form>
+
+    <?php if (!empty($mensagem)): ?>
+        <div class="mensagem">
+            <?php echo $mensagem; ?>
+        </div>
+    <?php endif; ?>
+
 </div>
 
 </body>

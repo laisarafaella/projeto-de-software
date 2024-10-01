@@ -27,7 +27,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt = $pdo->prepare("UPDATE usuarios SET notas_recebidas = notas_recebidas + 1, pontos = pontos + 50 WHERE nome = :usuario");
     $stmt->execute(['usuario' => $nomeUsuario]);
 
-    echo "<div class='mensagem'>Código inserido com sucesso! Você ganhou 50 pontos.</div>";
+    // Exibe a mensagem de sucesso
+    $mensagem = "Código inserido com sucesso! Você ganhou 50 pontos.";
 }
 ?>
 
@@ -92,9 +93,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <input type="text" id="codigo_nota" name="codigo_nota" required>
 
         <input type="submit" class="btn" value="Adicionar Código">
+
+        <div class="mensagem">
+            <?php if (isset($mensagem)) echo $mensagem; ?>
+        </div>
+
         <br>
         <a href="pagina_pontos.php" class="btn" style="display: inline-block; text-decoration: none;">Ver Pontos</a>
-        <a href="index.php.php" class="btn" style="display: inline-block; text-decoration: none;">Voltar a tela inicial</a>
+        <a href="index.php" class="btn" style="display: inline-block; text-decoration: none;">Voltar a tela inicial</a>
     </form>
 </div>
 

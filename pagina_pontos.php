@@ -51,10 +51,13 @@ if (isset($_POST['cupom'])) {
         // Deduz os pontos e exibe o cupom
         $stmt = $pdo->prepare("UPDATE usuarios SET pontos = pontos - :custo WHERE nome = :usuario");
         $stmt->execute(['custo' => $custo, 'usuario' => $nomeUsuario]);
-        echo "<div class='mensagem'>Você trocou $custo pontos pelo cupom de $desconto% de desconto: $cupom</div>";
+
+        // Armazena a mensagem de sucesso
+        $mensagem = "Você trocou $custo pontos pelo cupom de $desconto% de desconto: $cupom";
+
         $pontos -= $custo; // Atualiza a variável de pontos
     } else {
-        echo "<div class='mensagem'>Pontos insuficientes para trocar por esse desconto.</div>";
+        $mensagem = "Pontos insuficientes para trocar por esse desconto.";
     }
 }
 ?>
@@ -110,11 +113,17 @@ if (isset($_POST['cupom'])) {
 <div class="container">
     <h1>Quantidade de Notas: <?php echo $notasRecebidas; ?></h1>
     <h1>Seus Pontos: <?php echo $pontos; ?></h1>
+
     <form method="POST">
         <button class="btn" name="cupom" value="SYNC5">Trocar por desconto de 5% (250 pontos)</button>
         <button class="btn" name="cupom" value="SYNC10">Trocar por desconto de 10% (500 pontos)</button>
         <button class="btn" name="cupom" value="SYNC15">Trocar por desconto de 15% (750 pontos)</button>
     </form>
+
+    <div class="mensagem">
+        <?php if (isset($mensagem)) echo $mensagem; ?>
+    </div>
+
     <a href="criar_codigofiscal.php" class="btn" style="display: inline-block; text-decoration: none;">Voltar</a>
 </div>
 
