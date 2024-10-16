@@ -1,0 +1,66 @@
+
+main{
+    margin-top: 40px;
+}
+.caixa {
+    width: 100%;
+    background-color: white;
+    box-shadow: 2px 4px 6px #0000004f; 
+    padding: 10px;
+    margin: 20px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.titulo {
+    flex: 1;
+    font-size: 16px;
+    margin-right: 20px;
+    font-weight: bold;
+}
+
+.valor {
+    font-size: 14px;
+    font-style: italic;
+    color: gray;
+    margin-right: 20px;
+}
+
+.botoes {
+    display: flex;
+    gap: 10px;
+}
+
+.mais, .pontos {
+    background-color: #003E92;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.pontos-atuais {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 40px;
+    font-style: italic;
+}
+.pontos-atuais span{
+    font-weight: normal;
+}
+.detalhes-nfe {
+    display: none;
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.detalhes-nfe p {
+    margin: 5px 0;
+    font-size: 14px;
+}

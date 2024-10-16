@@ -1,0 +1,275 @@
+body{
+    margin: 0;
+}
+.section-ranking {
+    position: relative;
+    width: 99.9%;
+    max-width: 100%;
+    overflow: hidden;
+    margin-bottom: 6rem;
+}
+
+.ranking img {
+    width: 100%;
+    height: auto; 
+    display: block;
+}
+
+.text-section-ranking {
+    position: absolute;
+    top: 50%;
+    left: -20rem;
+    transform: translateY(-50%);
+    width: 84%;
+    text-align: center;
+    color: #fff;
+    padding: 20px;
+}
+
+.text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    gap: 20px; 
+}
+
+.text-container h1 {
+    font-size: 40px;
+    margin: 0; 
+}
+
+.text-container .action-btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 40px;
+    font-size: 14px;
+    border: none;
+    border-radius: 2px;
+    background-image: linear-gradient(to right, hsl(215, 100%, 26%), hsl(215, 100%, 26%));
+    color: #FFF;
+    cursor: pointer;    
+    z-index: 1;
+}
+.action-btn::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(to right, hsl(215, 100%, 26%), hsl(215, 93%, 39%), hsl(215, 93%, 39%));
+    z-index: -1;
+    transition: opacity 0.5s linear;
+    opacity: 0;
+    border-radius: 4px;
+}
+
+.action-btn:hover::before {
+    opacity: 1;
+}
+
+.action-btn i {
+    margin-left: 5px;
+}
+
+.text-container .action-btn:hover {
+    background-color: hsl(215, 93%, 39%);
+}
+.section-conheça {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    color: black;
+    margin-left: 15%;
+    margin-top: 3%;
+  }
+  .text-conheça {
+    font-size: 50px;
+    width: 73%;
+    font-weight: 700;
+    opacity: 0; 
+    animation: fadeInText 2s ease forwards;
+  }
+  @keyframes fadeInText {
+    to {
+      opacity: 1; 
+    }
+  }
+  .text-button {
+    display: grid;
+    grid-template-rows: auto auto;
+  }
+  #button-conheça {
+    width: 170px;
+    height: 40px;
+    border-radius: 2px;
+    padding: 15px;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+    font-weight: 400;
+    border: 1px solid rgba(255, 255, 255, 0.30);
+    background-color: #003E92;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "League Spartan", sans-serif;
+    background-image: linear-gradient(to right, hsl(215, 100%, 26%), hsl(215, 100%, 26%));
+  }
+  /* #button-conheça::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(to right, hsl(215, 100%, 26%), hsl(215, 93%, 39%), hsl(215, 93%, 39%));
+    z-index: -1;
+    transition: opacity 0.5s linear;
+    opacity: 0;
+    border-radius: 4px;
+  }
+  #button-conheça:hover::before {
+    opacity: 1;
+  } */
+  .img-homem video {
+    width: 450px;
+    margin-left: -20%;
+    margin-top: -30px;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+  }
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+.box-text {
+    border: 1px solid rgba(255, 255, 255, 0.30);
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 5%;
+    font-size: 30px;
+    text-align: center;
+    color: black;
+    font-weight: bold;
+    padding: 50px;
+    border-radius: 15px;
+    background: rgb(0, 62, 146, 0.2); 
+    backdrop-filter: blur(10px);
+    margin-bottom: 120px;
+}
+.plano-sessao {
+    text-align: center;
+    padding: 50px;
+    background-color: #EFF7FF;
+    overflow: hidden; 
+}
+.texto-central h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: -20px;
+}
+
+.texto-central p {
+    font-size: 28px;
+    margin-bottom: 50px;
+    color: black;
+}
+.texto-central span{
+    color: #003E92;
+    font-weight: bold;
+}
+.cards-container {
+    display: flex;
+    justify-content: center;
+    gap: 120px;
+}
+
+.card {
+    background-color: white;
+    box-shadow: 0 4px 10px rgb(132, 132, 132);
+    padding: 25px;
+    max-width: 300px;
+    text-align: center; 
+    padding-bottom: 12px;
+}
+.card h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: normal; 
+    letter-spacing: 1.3px;
+}
+
+.beneficios {
+    list-style-type: none; 
+    margin: 20px 0;
+    padding-left: 20px;
+    text-align: left;
+}
+
+.beneficios li {
+    margin: 6px 0;
+    font-size: 13px;
+    color: black;
+    position: relative;
+    padding-left: 11px; 
+}
+
+.beneficios li::before {
+    content: '•'; 
+    color: #003E92; 
+    font-size: 1.2em; 
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.card hr {
+    border: none;
+    border-top: 1px solid rgb(41, 41, 41);
+    margin: 17px auto; 
+    width: 85%; 
+}
+.card button {
+    position: relative;
+    padding: 12px 19px;
+    font-size: 12px;
+    border: none;
+    border-radius: 2px;
+    background-image: linear-gradient(to right, hsl(215, 100%, 26%), hsl(215, 100%, 26%));
+    color: #FFF;
+    cursor: pointer;    
+    z-index: 1;
+}
+
+.card button::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(to right, hsl(215, 100%, 26%), hsl(215, 93%, 39%), hsl(215, 93%, 39%));
+    z-index: -1;
+    transition: opacity 0.5s linear;
+    opacity: 0;
+    border-radius: 4px;
+}
+
+.card button:hover::before {
+    opacity: 1;
+}
+
+.card button i {
+    margin-left: 5px;
+}
+#anualmente{
+    font-size: 12px;
+    margin-top: 5px;
+}
+#termos{
+    font-size: 11px;
+    margin-top: 34px;
+}

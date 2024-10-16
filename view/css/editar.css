@@ -1,0 +1,98 @@
+.profile-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 5px;
+    margin-top: 30px;
+}
+.column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+}
+.photo-column {
+    align-items: center; 
+}
+.profile-photo {
+    width: 230px;
+    height: 200px;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+.input {
+    width: 73%;
+    border: none;
+    border-bottom: solid 1px #000;
+    font-size: 20px;
+    padding-left: 40px;
+    background: none;
+    color: #333;
+    position: relative;
+    z-index: 2;
+}
+.date-wrapper {
+    position: relative;
+    width: 73%;
+}
+
+.date-icon {
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    color: #555;
+}
+.date-input {
+    padding-left: 40px;
+}
+.date-placeholder {
+    font-size: 12px;
+    color: #999;
+}
+.inputCapsule {
+    margin: 20px 0px;
+}
+.edit-profile-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 90px;
+    font-size: 14px;
+    border: none;
+    border-radius: 2px;
+    background-image: linear-gradient(to right, hsl(215, 100%, 26%), hsl(215, 100%, 26%));
+    color: #FFF;
+    cursor: pointer;
+    margin-top: -100px;
+    margin-bottom: 50px;
+    z-index: 1; 
+    transition: background 0.5s ease-in-out;
+    margin-left: auto; 
+    margin-right: auto; /
+}
+.edit-profile-btn a{
+    text-decoration: none;
+    color: #FFF;
+}
+.edit-profile-btn::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(to right, hsl(215, 100%, 26%), hsl(215, 93%, 39%), hsl(215, 93%, 39%));
+    z-index: -1;
+    transition: opacity 0.5s ease-in-out;
+    opacity: 0;
+    border-radius: 4px;
+}
+.edit-profile-btn:hover::before {
+    opacity: 1;
+}
+
+.edit-profile-btn i {
+    margin-left: 5px;
+}
+

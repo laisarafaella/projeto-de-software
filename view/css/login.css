@@ -1,0 +1,129 @@
+.contTitulo {
+    color: #003E92;
+    font-weight: bold;
+    font-size: 19px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.input {
+    border-radius: 0; 
+    border: none;
+    border-bottom: solid 1px #000; 
+    font-size: 18px; 
+    padding: 7px; 
+    width: 70%;
+}
+
+.inputCapsule {
+    margin: 12px 0px;
+    position: relative; 
+    width: 100%;
+}
+
+.eye {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    cursor: pointer;
+    padding: 0; 
+}
+
+
+.conteudo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+    width: 100%;
+}
+
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%; 
+    box-sizing: border-box; 
+}
+
+.logarBtn {
+    color: #FFF;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 18px;
+    padding: 5px;
+    border-radius: 2px;
+    border: none;
+    cursor: pointer;
+    background-image: linear-gradient(to right, hsl(215, 100%, 26%), hsl(215, 100%, 26%));
+    position: relative;
+    z-index: 1;
+    width: 100%; 
+}
+
+.logarBtn::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(to right, hsl(215, 100%, 26%), hsl(215, 93%, 39%), hsl(215, 93%, 39%));
+    z-index: -1;
+    transition: opacity 0.5s linear;
+    opacity: 0;
+    border-radius: 4px;
+}
+
+.logarBtn:hover::before {
+    opacity: 1;
+}
+
+.esqueci {
+    margin-top: 30px;
+    color: #003E92;
+}
+
+/* Conserto */
+
+.formView {
+    padding: 1% 10%;
+    margin: 10% 0%;
+}
+
+.formView label {
+    font-weight: bold;
+    margin-top: 50px;
+}
+
+.formView input {
+    width: 100%;
+    border: none;
+    border-bottom: solid 1px #000;
+    font-size: 20px;
+    margin: 20px 0px;
+}
+
+.btnEntrar {
+    background: #003885;
+    width: 500px;
+    border: none;
+    color: #FFF;
+    padding: 10px 0px;
+    font-size: 18px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.esqueci {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.loginMain-a {
+    margin-top: 50px;
+}

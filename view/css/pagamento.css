@@ -1,0 +1,109 @@
+
+.input {
+    width: 100%;
+    border: none;
+    border-bottom: solid 1px #000;
+    border-radius: 0;
+    font-size: 20px;
+    padding: 4px;
+    margin-top: 6px;
+}
+.input-pequeno {
+    width: 60%;
+    border: none;
+    border-bottom: solid 1px #000;
+    border-radius: 0;
+    font-size: 13px;
+    margin: 0 auto;
+}
+.conteudo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.pagamentoForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 70%;
+    margin: 60px auto; 
+}
+
+.form-sections {
+    display: flex;
+    width: 40%;
+}
+
+.form-left, .form-right {
+    display: flex;
+    flex-direction: column;
+    width: 48%; 
+}
+
+.form-button {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+label {
+    font-size: 17px;
+    margin: 0 auto;
+}
+
+.continuarBtn {
+    color: #FFF;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    padding: 5px 7rem;
+    border-radius: 2px;
+    border: none;
+    cursor: pointer;
+    background-image: linear-gradient(to right, hsl(215, 100%, 26%), hsl(215, 100%, 26%));
+    position: relative;
+    z-index: 1;
+}
+
+.continuarBtn::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(to right, hsl(215, 100%, 26%), hsl(215, 93%, 39%), hsl(215, 93%, 39%));
+    z-index: -1;
+    transition: opacity 0.5s linear;
+    opacity: 0;
+    border-radius: 4px;
+}
+
+.continuarBtn:hover::before {
+    opacity: 1;
+}
+
+p {
+    font-size: 15px;
+    margin-top: 40px;
+}
+.seguranca {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    margin-top: 20px; 
+}
+
+.seguranca img {
+    margin-right: 8px; 
+    width: 15px; 
+    height: auto;
+}
+
+.seguranca p {
+    margin: 0;
+    font-size: 15px;
+    color: green;
+}
