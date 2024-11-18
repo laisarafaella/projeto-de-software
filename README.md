@@ -39,7 +39,7 @@ git clone https://github.com/becanmccotemig/iris
 http://localhost/phpmyadmin
 ```
 
-## 7. Importe os arquivo no banco de dados
+## 7. Importe os arquivos no banco de dados
 
 ```bash
 dump.sql
