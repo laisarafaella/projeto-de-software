@@ -8,6 +8,8 @@ O objetivo principal é permitir que usuários acumulem pontos ao realizarem com
 #### MySQL
 #### XAMPP, PHPMyAdmin
 
+<!-- - [Acesse as funcionalidades e os diagramas ](https://trello.com/invite/b/662bdf523aedaf1475636c05/ATTIe2e28d79bcff92862c9d6d07f15fb28e62A986E9/projeto-de-software) -->
+
 # 🚧 Execução
 Para execução do sistema é necessário seguir o passo a passo listado abaixo:
 
@@ -51,3 +53,6 @@ data.sql
 ```bash
 http://localhost/projeto-de-software/index.php
 ```
+
+## 9. Licença Proprietária
+Copyright (C) 2024. Todos os direitos reservados.
