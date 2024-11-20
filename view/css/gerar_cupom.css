@@ -1,0 +1,117 @@
+.main-cupons {
+    margin: 5rem 0rem;
+    padding: 0% 15%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.voucher {
+    width: 400px;
+    height: 200px;
+    background-color: #E1EBF6;
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 60%);
+    display: flex;
+    background-image: url(./assets/percentageBackground.svg);
+}
+
+.dotted {
+    width: 30%;
+    height: 100%;
+    border-right: dashed 2px #000;
+    display: flex;
+    align-items: center;
+}
+
+.elipse {
+    float: left;
+    width: 100px;
+    height: 100px;
+    margin: 0px;
+    shape-outside: circle(50% at 30%);
+    clip-path: circle(50% at 0%);
+    background: #fff;
+}
+
+.content {
+    width: 70%;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 30% 15% 55%;
+    grid-template-areas: "discount discount-info"
+        "description description"
+        "info-points info-points";
+}
+
+.discount {
+    grid-area: discount;
+    font-size: 44px;
+    font-weight: bold;
+    color: #000;
+    margin-left: 10px;
+    display: flex;
+    align-items: flex-end;
+}
+
+.discount-info {
+    grid-area: discount-info;
+    font-size: 20px;
+    font-weight: bold;
+    color: #FF0000;
+    margin-left: 10px;
+    display: flex;
+    align-items: flex-end;
+}
+
+.description {
+    grid-area: description;
+    font-size: 20px;
+    font-weight: bold;
+    color: #000;
+    margin-left: 10px;
+    display: flex;
+    align-items: flex-end;
+}
+
+.info-points {
+    grid-area: info-points;
+    font-size: 16px;
+    font-weight: bold;
+    color: #000;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.tape {
+    background-color: #0066FF;
+    color: #fff;
+    padding: 10px;
+}
+
+.generate-cupom {
+    margin-top: 20px;
+    padding: 10px 50px;
+    font-size: 14px;
+    border: 1px dashed #003E92;
+    border-radius: 4px;
+    background-color: transparent;
+    cursor: pointer;
+    color: #003E92;
+    transition: 0.4s;
+}
+
+.generate-cupom:hover {
+    background-color: #003E92;
+    color: #fff;
+}
+
+.container-cupom {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px;
+}
+

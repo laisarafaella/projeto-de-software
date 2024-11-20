@@ -41,20 +41,20 @@ $contador = 0;
   <link rel="stylesheet" href="./css/general.css" />
   <link rel="stylesheet" href="./css/footer.css" />
   <link rel="stylesheet" href="./css/responsividade.css" />
-  <!-- <script src="./js/dropdown.js"></script> -->
+  <script src="./js/app.js" defer></script>
   <!-- Kit do fontawesome para icones -->
   <script src="https://kit.fontawesome.com/b4d8cbf4fd.js" crossorigin="anonymous"></script>
-  <title>Sportsync - Login</title>
+  <title>Sportsync - Minhas Notas Fiscais</title>
 </head>
 
 <body class="inter">
   <header>
-    <ul class="nav-bar">
-      <li class="logo jockey-one-regular"><a href="#">SPORTSYNC</a></li>
+    <ul class="header">
+      <li class="logo jockey-one-regular"><a href="../index.php">SPORTSYNC</a></li>
       <li><a href="../index.php">Home</a></li>
-      <li><a href="#">Instituições</a></li>
-      <li><a href="#">Associe-se</a></li>
-      <li><a href="#">Parceiros</a></li>
+      <li><a href="ranking.php">Ranking</a></li>
+      <li><a href="planos.php">Planos</a></li>
+      <li><a href="parceiros.php">Parceiros</a></li>
       <?php
       if ($_SESSION['usuario'] == null || $_SESSION['usuario'] == false) {
         header("Location: login.php");
@@ -67,22 +67,30 @@ $contador = 0;
       ?>
 
     </ul>
-    <div class="dropmenu">
-      <span class="logo jockey-one-regular">SPORTSYNC</span>
-      <div class="dropdown">
-        <img onclick="Dropdown()" class="dropbtn" src="./icons/bars-solid.svg" />
-        <div id="myDropdown" class="dropdown-content">
-          <a href="index.html">Home</a>
-          <a href="#">Instituições</a>
-          <a href="#">Associe-se</a>
-          <a href="#">Parceiros</a>
-          <a href="cadastro.html">Cadastrar</a>
-          <a href="login.html">Login</a>
-        </div>
+    <ul class="mheader">
+            <li class="logo jockey-one-regular"><a href="../index.php">SPORTSYNC</a></li>
+      </ul>
+      <img onclick="menu()" class="dropbtn menu" src="./assets/bars-solid.svg" alt="Menu">
+      <div id="dropdown" class="dropdown-content">
+        <a href="../index.php">Home</a>
+        <a href="ranking.php">Ranking</a>
+        <a href="planos.php">Planos</a>
+        <a href="parceiros.php">Parceiros</a>
+        <?php
+        if ($_SESSION['usuario'] == null || $_SESSION['usuario'] == false) {
+          header("Location: login.php");
+        } else {
+          $linhas3 = geraPerfil();
+          foreach ($linhas3 as $linha3) {
+          echo "<li><b><a href='perfil.php'>" . $linha3->nome . "</a></b></li>";
+          }
+        }
+        ?>
       </div>
-    </div>
   </header>
-  <main>
+
+
+  <main class="minhasNfes">
     <div class="tituloPag">
       <div class="coisarandom"></div>
       Minhas NF-E's
@@ -91,17 +99,16 @@ $contador = 0;
       $contador++;
       echo '<div class="caixa">';
       echo '<p class="titulo">&nbsp' . $linha->apelido . '</p>';
-      echo '<span class="valor">Valor:&nbsp ' . $linha->valor_total . '</span>';
+      echo '<span class="valor">Valor: R$' . $linha->valor_total . '</span>';
       echo '<div class="botoes">';
-      echo '<button class="mais" onclick="toggleDetalhes('.$contador.')">Mais</button>';
-      echo '<button class="pontos">Obter pontos</button>';
+      echo '<button class="mais" onclick="toggleDetalhes('.$contador.')">Mais Detalhes</button>';
       echo '</div>';
       echo '</div>';
       echo '<div class="detalhes-nfe" id="detalhes-'.$contador.'">';
       echo '<p><strong>Chave de Acesso:&nbsp</strong>' . $linha->chave_acesso . '</p>';
       echo '<p><strong>Nome/razão social:&nbsp</strong>' . $linha->razao_social . '</p>';
       echo '<p><strong>CNPJ do Emitente:&nbsp</strong>' . $linha->cnpj . '</p>';
-      echo '<p><strong>Data de Emissão:&nbsp</strong>' . $linha->data_emissao . '</p>';
+      echo '<p><strong>Data de Emissão:&nbsp</strong>' . date('d/m/Y', strtotime($linha->data_emissao)) . '</p>';
       echo '<p><strong>Valor Total:&nbsp</strong>' . $linha->valor_total . '</p>';
       echo '<p><strong>Apelido:</strong>&nbsp' . $linha->apelido . '</p>';
       echo '</div> ';
@@ -117,50 +124,41 @@ $contador = 0;
       ?>
       
   </main>
+
+
   <footer>
-    <div class="container">
-      <div class="section">
-        <h4>Organização</h4>
-        <ul>
-          <li>
-            <a href="#">Políticas de Privacidade</a>
-          </li>
-          <li><a href="#">Diretrizes da Comunidade</a></li>
-          <li><a href="#">Fale Conosco</a></li>
-        </ul>
-      </div>
-      <div class="section">
-        <h4>Recursos</h4>
-        <ul>
-          <li><a href="#">Serviços</a></li>
-          <li><a href="#">Seja um colaborador</a></li>
-          <li><a href="#">Assine nossa newsletter</a></li>
-        </ul>
-      </div>
-      <div class="section">
-        <div class="midia">
-          <h4>Redes Sociais</h4>
-          <div class="icons">
-            <a href="#"><i class="fa-brands fa-instagram fa-xl"></i></a>
-            <a href="#"><i class="fa-brands fa-x-twitter fa-xl"></i></a>
-            <a href="#"><i class="fa-brands fa-whatsapp fa-xl"></i></a>
-            <a href="#"><i class="fa-brands fa-youtube fa-xl"></i></a>
-          </div>
+        <div class="box-footer">
+            <div class="footer-column">
+                <h3>Organização</h3>
+                <ul>
+                    <li><a href="politicas.php"><span id="destaque-f">Política de Privacidade</span></a></li>
+                    <li><a href="diretrizes.php">Diretrizes da comunidade</a></li>
+                    <li><a href="contato.php">Fale conosco</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Recursos</h3>
+                <ul>
+                    <li><a href="servicos.php">Serviços</a></li>
+                    <li><a href="planos.php">Seja um sócio</a></li>
+                    <li><a href="parceiros.php">Parceiros</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Redes Sociais</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-x"></i></a>
+                    <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="bottom normal">
-      <p>
-        <span>SportSync &copy; 2024</span> - Todos os direitos reservados.
-      </p>
-    </div>
-    <div class="bottom responsive">
-      <p>
-        <span class="spanfooter">SPORTSYNC</span>
-        <span class="text">Todos os direitos reservados.</span>
-      </p>
-    </div>
-  </footer>
+        <hr class="footer-divider">
+        <div class="footer-bottom">
+            <p>Sportsync © 2024 - Todos os direitos reservados.</p>
+        </div>
+    </footer>
   <script>
 
     function toggleDetalhes(id) {
@@ -189,7 +187,11 @@ $contador = 0;
     });
   </script>
   <style type="text/css" href="index.css">
+        <?php include('./css/header.css'); ?>
         <?php include('./css/minhas-nfe.css'); ?>
+        <?php include('./css/footer.css'); ?>
+        <?php include('./css/responsividade.css'); ?>
+        <?php include('./css/general.css'); ?>
     </style>
 </body>
 

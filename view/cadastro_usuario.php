@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="./css/footer.css" />
   <link rel="stylesheet" href="./css/responsividade.css" />
   <link rel="stylesheet" href="./css/cadastro.css" />
-  <script src="./js/dropdown.js"></script>
+  <script src="./js/app.js" defer></script>
   <!-- Kit do fontawesome para ícones -->
   <script src="https://kit.fontawesome.com/b4d8cbf4fd.js" crossorigin="anonymous"></script>
   <title>Sportsync - Cadastro</title>
@@ -17,35 +17,33 @@
 
 <body class="inter">
   <header>
-    <ul class="nav-bar">
-      <li class="logo jockey-one-regular"><a href="#">SPORTSYNC</a></li>
+    <ul class="header">
+      <li class="logo jockey-one-regular"><a href="../index.php">SPORTSYNC</a></li>
       <li><a href="../index.php">Home</a></li>
-      <li><a href="ranking.html">Instituições</a></li>
-      <li><a href="#">Associe-se</a></li>
-      <li><a href="#">Parceiros</a></li>
+      <li><a href="ranking.php">Ranking</a></li>
+      <li><a href="planos.php">Planos</a></li>
+      <li><a href="parceiros.php">Parceiros</a></li>
       <li><a href="cadastro_usuario.php">Cadastrar</a></li>
-      <li><a href="perfil.php">Perfil</a></li>
       <li class="login"><a href="login.php">Login</a></li>
     </ul>
-    <div class="dropmenu">
-      <span class="logo jockey-one-regular">SPORTSYNC</span>
-      <div class="dropdown">
-        <img onclick="Dropdown()" class="dropbtn" src="./icons/bars-solid.svg" />
-        <div id="myDropdown" class="dropdown-content">
-          <a href="index.php">Home</a>
-          <a href="ranking.html">Instituições</a>
-          <a href="#">Associe-se</a>
-          <a href="#">Parceiros</a>
-          <a href="cadastro_usuario.php">Cadastrar</a>
-          <li><a href="perfil.php">Perfil</a></li>
-          <a href="login.php">Login</a>
-        </div>
-      </div>
+    <ul class="mheader">
+      <li class="logo jockey-one-regular"><a href="../index.php">SPORTSYNC</a></li>
+    </ul>
+    <img onclick="menu()" class="dropbtn menu" src="./assets/bars-solid.svg" alt="Menu">
+    <div id="dropdown" class="dropdown-content">
+      <a href="../index.php">Home</a>
+      <a href="ranking.php">Ranking</a>
+      <a href="planos.php">Planos</a>
+      <a href="parceiros.php">Parceiros</a>
+      <a href="cadastro_usuario.php">Cadastrar</a>
+      <a href="login.php">Login</a>
     </div>
   </header>
   <div class="tituloPag">
     <div class="coisarandom"></div>Cadastre-se
   </div>
+
+
   <main>
     <div class="conteudo">
       <form method="POST" class="loginForm" action="../controller/gera_registro.php">
@@ -53,38 +51,39 @@
           <div class="form-left">
             <label class="inputCapsule">
               <b>Nome:</b><br>
-              <input type="text" name="nome" class="input">
+              <input type="text" name="nome" class="input" required>
             </label>
             <label class="inputCapsule">
               <b>Data de Nascimento:</b><br>
               <div class="date-wrapper">
-                <input type="date" name="data_nascimento" class="input date-input">
-                <span class="date-icon"><i class="fa-solid fa-calendar"></i></span>
-                <span class="date-placeholder">Escolha uma data</span>
+                <input type="date" name="data_nascimento" class="input date-input" required>
+                <!--<span class="date-icon"><i class="fa-solid fa-calendar"></i></span>
+                <span class="date-placeholder">Escolha uma data</span>-->
               </div>
             </label>
           </div>
           <div class="form-right">
             <label class="inputCapsule">
               <b>Sobrenome:</b><br>
-              <input type="text" name="sobrenome" class="input">
+              <input type="text" name="sobrenome" class="input" required>
             </label>
             <label class="inputCapsule">
               <b>Email:</b><br>
-              <input type="email" name="email" class="input">
-            </label>
-            <label class="inputCapsule">
-              <b>Senha:</b><br>
-              <input type="password" name="senha" class="input">
+              <input type="email" name="email" class="input" required>
             </label>
           </div>
+        </div>
+        <div class="form-bottom">
+          <label class="inputCapsule7">
+            <b>Senha:</b><br>
+            <input type="password" name="senha" class="senhainput" required>
+          </label>
         </div>
         <div class="termos">
           <div class="checkbox-group">
             <input type="checkbox" id="policies" name="policies">
             <label for="policies">
-              Ao cadastrar na SportSync você concorda com as <span id="destaque">Políticas de Privacidade</span> e com
-              os <span id="destaque-p">Termos de Uso</span> (obrigatório).
+              Ao cadastrar na SportSync você concorda com as <span id="destaque"><a href="politicas.php">Políticas de Privacidade.</a></span>
             </label>
           </div>
           <div class="checkbox-group">
@@ -97,26 +96,29 @@
         <div class="form-button">
           <button type="submit" name="logar" class="logarBtn">Cadastrar</button>
         </div>
-        <div class="pergunta">Já possui cadastro? vá para <a href="login.html" id="destaque">Login</a></div>
+        <div class="pergunta">Já possui cadastro? Vá para <a href="login.php" id="destaque">Login</a></div>
       </form>
     </div>
   </main>
+
+
+
   <footer>
     <div class="box-footer">
       <div class="footer-column">
         <h3>Organização</h3>
         <ul>
-          <li><a href="#"><span id="destaque-f">Política de Privacidade</span></a></li>
-          <li><a href="#">Diretrizes da comunidade</a></li>
-          <li><a href="#">Fale conosco</a></li>
+          <li><a href="politicas.php"><span id="destaque-f">Política de Privacidade</span></a></li>
+          <li><a href="diretrizes.php">Diretrizes da comunidade</a></li>
+          <li><a href="contato.php">Fale conosco</a></li>
         </ul>
       </div>
       <div class="footer-column">
         <h3>Recursos</h3>
         <ul>
-          <li><a href="#">Serviços</a></li>
-          <li><a href="#">Seja um colaborador</a></li>
-          <li><a href="#">Assine nossa newsletter</a></li>
+          <li><a href="servicos.php">Serviços</a></li>
+          <li><a href="planos.php">Seja um sócio</a></li>
+          <li><a href="parceiros.php">Parceiros</a></li>
         </ul>
       </div>
       <div class="footer-column">
@@ -151,6 +153,13 @@
       navlinks.style.display = 'none';
     });
   </script>
+  <style type="text/css" href="index.css">
+        <?php include('./css/header.css'); ?>
+        <?php include('./css/cadastro.css'); ?>
+        <?php include('./css/footer.css'); ?>
+        <?php include('./css/responsividade.css'); ?>
+        <?php include('./css/general.css'); ?>
+    </style>
 </body>
 
 </html>

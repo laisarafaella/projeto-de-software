@@ -15,6 +15,7 @@ class Usuario
     private $pontos;
     private $numCupons;
     private $idPlano;
+    private $expiracao;
 
     public function setId($id) {$this->id = $id; return $this;}
     public function setNome($nome){$this->nome = $nome;}
@@ -29,6 +30,7 @@ class Usuario
     public function setPontos($pontos){$this->pontos = $pontos;}
     public function setNumCupons($numCupons){$this->numCupons = $numCupons;}
     public function setIdPlano($idPlano){$this->idPlano = $idPlano;}
+    public function setExpiracao($expiracao){$this->expiracao = $expiracao;}
 
     public function getId() {return $this->id;}
     public function getNome(){return $this->nome;}
@@ -43,4 +45,5 @@ class Usuario
     public function getPontos(){return $this->pontos;}
     public function getNumCupons(){return $this->numCupons;}
     public function getIdPlano(){return $this->idPlano;}
+    public function getExpiracao(){return $this->expiracao;}
 }

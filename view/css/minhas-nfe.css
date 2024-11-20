@@ -1,7 +1,14 @@
-
-main{
-    margin-top: 40px;
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
+
+.minhasNfes {
+    margin-top: 40px;
+    margin-bottom: 40vh;
+}
+
 .caixa {
     width: 100%;
     background-color: white;
@@ -47,9 +54,11 @@ main{
     margin-top: 40px;
     font-style: italic;
 }
+
 .pontos-atuais span{
     font-weight: normal;
 }
+
 .detalhes-nfe {
     display: none;
     width: 100%;
@@ -58,6 +67,9 @@ main{
     background-color: #f9f9f9;
     border: 1px solid #ddd;
     border-radius: 4px;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    box-sizing: border-box;
 }
 
 .detalhes-nfe p {

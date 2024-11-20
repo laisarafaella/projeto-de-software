@@ -1,4 +1,4 @@
-.titulo{
+.titulo {
     display: flex;
     justify-content: center;
     text-align: center;
@@ -10,7 +10,9 @@
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    gap: 30px;
+    flex-wrap: wrap;
+    gap: 35px;
+    margin-bottom: 50px;
 }
 
 .ranking-box {
@@ -20,15 +22,18 @@
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
     width: 200px;
 }
+
 .ranking-box-big:hover{
     transform: scale(1.02);
     transition: 0.3s;
 }
+
 .ranking-box:hover{
     transform: scale(1.02);
     transition: 0.3s;
 }
-.ranking-box-big{
+
+.ranking-box-big {
     background-color: #EBF3FF;
     padding: 20px 45px;
     text-align: center;
@@ -79,7 +84,8 @@
     font-weight: bold;
     margin-right: 5px; 
 }
-button-container {
+
+.button-container {
     display: flex;
     justify-content: center; 
     padding: 10px;
@@ -91,7 +97,7 @@ button {
     align-items: center;
     justify-content: center;
     padding: 8px 12px; 
-    font-size: 12px;
+    font-size: 14px;
     border: none;
     border-radius: 2px;
     background-image: linear-gradient(to right, hsl(215, 100%, 26%), hsl(215, 100%, 26%));
@@ -101,7 +107,7 @@ button {
     margin: 0 auto; 
     margin-top: 10px;
 }
-button a{
+button a {
     text-decoration: none;
     color: #FFF;
 }

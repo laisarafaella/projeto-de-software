@@ -1,0 +1,67 @@
+.container-meusCupons {
+    width: 80%;
+    margin: 2rem auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    border-collapse: collapse;
+    /*background-color: #000;*/
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.container-meusCupons th, table td {
+    padding: 1rem;
+    text-align: left;
+}
+
+.container-meusCupons th {
+    background-color: #003E92;
+    color: #fff;
+    font-weight: bold;
+}
+
+.container-meusCupons tr:nth-child(even) {
+    background-color: #fff;
+}
+
+
+.btnVoltar a {
+    color: #FFF;
+    text-decoration: none;
+}
+
+.btnVoltar {
+    color: #FFF;
+    margin-top: 20px;
+    margin-bottom: 100px;
+    font-size: 20px;
+    padding: 5px 4rem;
+    border-radius: 2px;
+    border: none;
+    cursor: pointer;
+    background-image: linear-gradient(to right, hsl(215, 100%, 26%), hsl(215, 100%, 26%));
+    position: relative;
+    z-index: 1;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btnVoltar::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(to right, hsl(215, 100%, 26%), hsl(215, 93%, 39%), hsl(215, 93%, 39%));
+    z-index: -1;
+    transition: opacity 0.5s linear;
+    opacity: 0;
+    border-radius: 4px;
+}
+
+.btnVoltar:hover::before {
+    opacity: 1;
+}

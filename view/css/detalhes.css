@@ -1,0 +1,113 @@
+.break {
+    white-space: nowrap;
+}
+
+.detalhes-container {
+    display: flex;
+    margin: 30px 0;
+}
+
+.coluna-esquerda {
+    width: 30%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 150px;
+}
+
+.coluna-direita {
+    width: 70%;
+    padding: 20px;
+    margin-left: 40px;
+}
+
+.atleta-foto {
+    border-radius: 50%;
+    width: 250px;
+    height: 250px;
+}
+
+.nome-atleta {
+    color: #003E92;
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.caixa-biografia {
+    background-color: #d0e6f7;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 14px;
+    position: relative;
+    width: 350px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.caixa-biografia::before {
+    content: '“';
+    font-size: 4em;
+    color: #003E92;
+    position: absolute;
+    top: -12px;
+    left: -10px;
+}
+
+.caixa-biografia::after {
+    content: '”';
+    font-size: 4em;
+    color: #003E92;
+    position: absolute;
+    bottom: -45px;
+    right: -10px;
+}
+
+.informacoes-detalhadas h3 {
+    color: #003E92;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.informacoes-detalhadas p {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.doar-button {
+    position: relative;
+    padding: 8px 12px; 
+    font-size: 14px;
+    border: none;
+    border-radius: 2px;
+    background-image: linear-gradient(to right, hsl(215, 100%, 26%), hsl(215, 100%, 26%));
+    cursor: pointer;    
+    z-index: 1;
+    width: 150px; 
+    margin: 0 auto; 
+    margin-top: 10px;
+}
+
+.doar-button a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.doar-button::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(to right, hsl(215, 100%, 26%), hsl(215, 93%, 39%), hsl(215, 93%, 39%));
+    z-index: -1;
+    transition: opacity 0.5s linear;
+    opacity: 0;
+    border-radius: 4px;
+}
+
+.doar-button:hover::before {
+    opacity: 1;
+}

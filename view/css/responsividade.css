@@ -1,16 +1,3 @@
-@media screen and (max-width: 1230px) {
-    .dropmenu {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0% 5%;
-    }
-
-    .nav-bar {
-        display: none;
-    }
-}
-
 @media screen and (max-width: 570px) {
     .contTitulo {
         font-size: 28px;
@@ -26,6 +13,8 @@
         width: 280px;
     }
 }
+
+/* Footer*/
 @media (max-width: 995px) {
     footer {
         flex-wrap: wrap;
@@ -45,6 +34,7 @@
         margin-bottom: 15%;
     }
 }
+
 @media (max-width: 768px) {
     .box-footer {
         flex-direction: column;
@@ -58,5 +48,1035 @@
 
     .social-icons {
         justify-content: center;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .text-section-ranking span {
+        font-size: 32px;
+        font-weight: 700;
+    }
+
+    .text-container .action-btn {
+        padding: 14px 14px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .text-section-ranking span {
+        font-size: 14px;
+        font-weight: 700;
+    }
+}
+
+@media screen and (min-width: 850px) {
+    .ranking-box {
+        margin: 15px 0px;
+    }
+}
+
+@media screen and (max-width: 920px) {
+    .profile-container {
+        flex-direction: column;
+    }
+
+    .user-info {
+        text-align: center;
+    }
+}
+
+/* Servicos */
+
+@media (min-width: 768px) {
+    .servico-container {
+        padding: 0% 30%;
+    }
+}
+
+@media (max-width: 480px) {
+    .servico-box p {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        margin-bottom: 10px;
+        line-height: 1.4;
+    }
+
+    .servico-box p span {
+        margin-bottom: 5px;
+    }
+}
+
+@media (max-width: 920px) {
+    .servico-container {
+        padding: 0% 10%;
+    }
+    .servico-box p {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        margin-bottom: 10px;
+        line-height: 1.4;
+    }
+
+    .servico-box p span {
+        margin-bottom: 5px;
+    }
+}
+
+
+/* Parceiros*/
+
+@media screen and (min-width: 850px) {
+    .parceiro-box {
+        margin: 15px 0px;
+    }
+}
+
+
+/* Politicas e Diretrizes*/
+
+@media (max-width: 768px) {
+    .container-politicas {
+        padding: 15px;
+        font-size: 14px;
+        margin: 20px 10px;
+    }
+
+    .container-politicas h2 {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container-politicas {
+        padding: 10px;
+        font-size: 13px;
+        line-height: 1.4;
+    }
+
+    .container-politicas h2 {
+        font-size: 16px;
+    }
+}
+
+
+
+/* Contato */
+
+@media (max-width: 768px) {
+    .form-sections-contact {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .form-left-contact,
+    .form-right-contact {
+        width: 100%;
+    }
+
+    .inputCapsule-contact {
+        margin: 10px 0;
+    }
+
+    .textarea-container {
+        margin-top: 10px;
+    }
+
+    .submitBtn-contact {
+        font-size: 18px;
+        padding: 8px 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .input-contact {
+        font-size: 16px;
+        padding: 4px 2px;
+    }
+
+    textarea.input-contact {
+        font-size: 16px;
+    }
+
+    .submitBtn-contact {
+        font-size: 16px;
+        padding: 6px 25px;
+    }
+}
+
+
+
+
+
+
+/* Detalhes Ranking*/
+
+@media (max-width: 768px) {
+
+    
+    
+    .detalhes-container {
+        flex-direction: column;
+        align-items: center;
+        margin: 20px 0;
+    }
+
+    .coluna-esquerda, 
+    .coluna-direita {
+        width: 100%;
+        margin: 0;
+        padding: 10px;
+    }
+
+    .coluna-esquerda {
+        margin-bottom: 20px;
+    }
+
+    .caixa-biografia {
+        width: 100%;
+    }
+
+    .atleta-foto {
+        width: 200px;
+        height: 200px;
+    }
+
+    .doar-button {
+        width: 100%;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .detalhes-container {
+        margin: 15px 0;
+    }
+
+    .atleta-foto {
+        width: 150px;
+        height: 150px;
+    }
+
+    .nome-atleta {
+        font-size: 20px;
+    }
+
+    .caixa-biografia {
+        font-size: 14px;
+    }
+
+    .informacoes-detalhadas p {
+        font-size: 16px;
+    }
+
+    .doar-button {
+        font-size: 14px;
+    }
+}
+
+
+/* Extrato*/
+
+@media (max-width: 600px) {
+    .container-historico section {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .card-historico {
+        width: 100%;
+    }
+
+    .table-historico thead th, .table-historico tbody td {
+        padding: 0.5rem;
+    }
+    
+    
+}
+
+
+/* Logista*/
+
+@media (max-width: 768px) {
+    .logista {
+        max-width: 90%;
+        padding: 15px;
+    }
+
+    .inputCodigo {
+        width: 90%;
+        font-size: 18px;
+        padding: 8px;
+    }
+
+    .validarBtn {
+        padding: 5px 4rem;
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logista {
+        max-width: 95%;
+        padding: 10px;
+    }
+
+    .inputCodigo {
+        font-size: 16px;
+        padding: 6px;
+        width: 80%;
+    }
+
+    .validarBtn {
+        padding: 5px 3rem;
+        font-size: 16px;
+    }
+}
+
+
+
+/* Cadastro*/
+
+@media (max-width: 768px) {
+    .form-sections {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .form-left, .form-right {
+        width: 100%;
+    }
+
+    .senhainput {
+        width: 400px;
+    }
+
+    .input, .date-input {
+        width: 100%;
+    }
+
+    .logarBtn {
+        width: 90%;
+        font-size: 18px;
+        padding: 10px;
+    }
+
+    .checkbox-group {
+        align-items: flex-start;
+    }
+
+    .checkbox-group input[type="checkbox"] {
+        margin-bottom: 5px;
+    }
+
+    .pergunta {
+        text-align: center;
+        font-size: 16px;
+        margin-top: 10px;
+    }
+
+    .conteudo {
+        margin: 20px 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    /*Essa tela ainda nn consegui fazer/*/
+}
+
+
+
+
+
+
+
+
+/* Login */
+
+@media (max-width: 768px) {
+    .loginMain-a {
+        margin-top: 20px;
+        padding: 0 5%;
+    }
+
+    .formView {
+        padding: 5%;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    .formView label {
+        font-size: 16px;
+        margin-top: 20px;
+    }
+
+    .formView input {
+        width: 100%;
+        font-size: 16px;
+        margin: 15px 0;
+        padding: 10px;
+    }
+
+    .btnEntrar {
+        width: 100%;
+        font-size: 18px;
+        padding: 10px;
+    }
+
+    .esqueci {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 15px;
+    }
+
+    .esqueci a {
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .loginMain-a {
+        padding: 0 2%;
+    }
+
+    .formView input {
+        font-size: 14px;
+        margin: 10px 0;
+        padding: 8px;
+    }
+
+    .btnEntrar {
+        font-size: 16px;
+        padding: 8px;
+    }
+}
+
+
+
+/* Editar*/
+
+@media screen and (max-width: 768px) {
+    .formEditar {
+        padding: 5px;
+        
+    }
+
+    .inputCapsule {
+        margin: 10px 0;
+    }
+
+    .input {
+        font-size: 14px;
+        padding: 8px 10px;
+    }
+
+    .alterarBtn {
+        padding: 10px 2rem;
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .inputCapsule label {
+        font-size: 14px;
+    }
+
+    .input {
+        font-size: 14px;
+        padding: 8px 10px;
+        width: 100%;
+    }
+
+    .alterarBtn {
+        padding: 10px 1.5rem;
+        font-size: 14px;
+    }
+}
+
+
+
+
+
+/* Cadastrar Nfe*/
+
+@media (max-width: 768px) {
+    .contNfe {
+        height: auto;
+        padding: 20px 10px; 
+    }
+
+    .inputs {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .inputDataEmissao {
+
+    }
+
+    .inputs > div {
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    .inputNfe {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .cadastrarBtn {
+        width: 100%;
+        max-width: 250px;
+        margin: 0 auto; 
+        padding: 12px;
+        font-size: 18px;
+    }
+
+    
+    .containerBotao {
+        display: flex;
+        justify-content: center;
+    }
+
+    
+}
+
+@media (max-width: 480px) {
+
+    label {
+        font-size: 16px;
+    }
+
+    .inputNfe {
+        font-size: 16px;
+    }
+
+    .cadastrarBtn {
+        max-width: 200px;
+        font-size: 18px;
+        padding: 10px;
+    }
+}
+
+
+
+
+
+
+
+/* Minhas Nfes*/
+
+@media screen and (max-width: 768px) {
+    .caixa {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 5px;
+        gap: 15px;
+    }
+
+    .titulo, .valor {
+        font-size: 14px;
+        margin-right: 0;
+    }
+
+    .botoes {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .mais, .pontos {
+        font-size: 14px;
+        padding: 8px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .caixa {
+        padding: 10px;
+        gap: 8px;
+    }
+
+    .titulo {
+        font-size: 14px;
+        min-width: auto;
+    }
+
+    .valor {
+        font-size: 14px;
+        min-width: auto;
+    }
+
+    .mais, .pontos {
+        font-size: 14px;
+        padding: 6px;
+    }
+}
+
+
+/* Pagamento*/
+
+
+
+
+
+
+/* Doação*/
+
+@media screen and (max-width: 768px) {
+    .conteudo {
+        margin-top: 40px;
+        padding: 0 10px;
+    }
+
+    .subtitulo {
+        font-size: 1.2rem;
+        margin-top: 1rem;
+    }
+
+    .donationForm {
+        max-width: 90%;
+    }
+
+    .inputDoacao {
+        font-size: 16px;
+        padding: 4px;
+    }
+
+    .form-button .btnDonate {
+        font-size: 18px;
+        padding: 8px 12px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .conteudo {
+        margin-top: 20px;
+    }
+
+    .subtitulo {
+        font-size: 1rem;
+        margin-top: 0.8rem;
+    }
+
+    .donationForm {
+        max-width: 100%;
+    }
+
+    .inputDoacao {
+        font-size: 16px;
+        padding: 6px;
+    }
+
+    .form-button .btnDonate {
+        font-size: 16px;
+        padding: 6px 10px;
+    }
+}
+
+
+
+/* Gerar Cupom*/
+
+@media (max-width: 768px) {
+    .main-cupons {
+        padding: 0 5%;
+        margin: 3rem 0;
+    }
+
+    .voucher {
+        width: 90%;
+        height: auto;
+        margin: 10px 0; 
+    }
+
+    .dotted {
+        width: 20%;
+        border-right: dashed 1px #000;
+    }
+
+    .content {
+        width: 100%;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-template-areas: 
+            "discount"
+            "discount-info"
+            "description"
+            "info-points";
+    }
+
+    .discount {
+        font-size: 36px;
+        margin-left: 0;
+        align-items: flex-start;
+    }
+
+    .discount-info {
+        font-size: 18px;
+    }
+
+    .description {
+        font-size: 18px;
+    }
+
+    .info-points {
+        font-size: 14px;
+        margin-left: 0;
+        align-items: flex-start;
+    }
+
+    .tape {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .generate-cupom {
+        padding: 8px 30px; 
+        font-size: 12px;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-cupons {
+        padding: 0 10px;
+        margin: 1.5rem 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .container-cupom {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 10px 0;
+    }
+
+    .voucher {
+        width: 95%;
+        height: auto;
+        margin: 10px 0;
+    }
+
+    .dotted {
+        width: 15%;
+        border-right: dashed 1px #000;
+        display: flex;
+        justify-content: center; 
+        align-items: center;
+    }
+
+    .elipse {
+        width: 50px;
+        height: 50px;
+    }
+
+    .content {
+        width: 85%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+    }
+
+    .discount {
+        font-size: 24px; 
+        margin-left: 0;
+    }
+
+    .discount-info {
+        font-size: 14px;
+    }
+
+    .description {
+        font-size: 14px;
+    }
+
+    .info-points {
+        font-size: 12px;
+        justify-content: flex-start;
+    }
+
+    .tape {
+        padding: 4px;
+        font-size: 12px;
+    }
+
+    .generate-cupom {
+        width: 100%;
+        text-align: center;
+        padding: 8px;
+        font-size: 12px;
+        margin-top: 10px;
+    }
+}
+
+
+
+
+
+
+
+/* Cupom*/
+
+@media (max-width: 768px) {
+    .cupom-container {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .voucher {
+        width: 100%;
+        height: 200px;
+        flex-direction: row;
+    }
+
+    .dotted {
+        width: 30%;
+        height: 100%;
+        border-right: dashed 2px #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .elipse {
+        width: 80px;
+        height: 80px;
+    }
+
+    .content {
+        width: 70%;
+        padding: 10px;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto auto;
+        grid-template-areas:
+            "discount"
+            "discount-info"
+            "description"
+            "info-points";
+        text-align: center;
+    }
+
+    .codigo-container {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .codigo-cupom {
+        width: 100px;
+        font-size: 0.9rem;
+    }
+
+    .codigo-container button {
+        right: 10px;
+        top: 50%;
+    }
+
+    .problema-link {
+        margin-top: 5px; 
+        text-align: center;
+    }
+
+    .btns {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .cupom-btn {
+        width: 100%;
+        font-size: 18px;
+        padding: 8px;
+    }
+
+    .cimaCupom {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .cupom-info h2,
+    .cupom-info p {
+        text-align: center;
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-cupom {
+        width: 500px;
+    }
+
+    .voucher {
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+    }
+
+    .dotted {
+        width: 30%;
+        height: 100%;
+        border-right: dashed 2px #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .elipse {
+        margin: auto;
+    }
+
+    .content {
+        padding: 10px;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto auto;
+        grid-template-areas:
+            "discount"
+            "discount-info"
+            "description"
+            "info-points";
+        text-align: center;
+    }
+
+    .codigo-cupom {
+        font-size: 0.8rem;
+        width: calc(100% - 40px);
+    }
+
+    .btns {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .cupom-btn {
+        font-size: 16px;
+        padding: 6px;
+    }
+
+    .cupom-info h2 {
+        font-size: 1rem;
+    }
+
+    .cupom-info p {
+        font-size: 0.9rem;
+    }
+
+    .problema-link {
+        margin-top: 10px;
+    }
+}
+
+
+
+
+
+
+
+
+
+/* Meus Cupons*/
+
+@media screen and (max-width: 768px) {
+    .container-meusCupons {
+        width: 95%;
+    }
+
+    .container-meusCupons th, table td {
+        padding: 0.8rem;
+    }
+
+    .btnVoltar {
+        font-size: 16px;
+        padding: 5px 3rem;
+        margin-bottom: 50px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .container-meusCupons {
+        width: 90%;
+    }
+
+    .container-meusCupons th, table td {
+        font-size: 14px;
+        padding: 0.6rem;
+    }
+
+    .btnVoltar {
+        font-size: 16px;
+        padding: 5px 2rem;
+        margin-bottom: 30px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Recuperar senha / Senha / Atualizar Senha*/
+
+@media (max-width: 768px) {
+    .information {
+        font-size: 16px;
+    }
+
+    label {
+        font-size: 16px;
+    }
+
+    .formRecuperar {
+        padding: 15px;
+    }
+
+    .formRecuperar input[type="text"],
+    .formRecuperar input[type="email"],
+    .formRecuperar input[type="password"] {
+        font-size: 18px;
+        padding: 8px;
+        margin-top: 15px;
+    }
+
+    .formRecuperar input[type="submit"] {
+        font-size: 16px;
+        padding: 8px 15px;
+    }
+
+    .remember {
+        margin-bottom: 30px;
+    }
+
+    .forgot {
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .formRecuperar {
+        padding: 10px;
+        max-width: 100%;
+    }
+
+    .formRecuperar input[type="text"],
+    .formRecuperar input[type="email"],
+    .formRecuperar input[type="password"] {
+        font-size: 16px;
+        padding: 8px;
+    }
+
+    .formRecuperar input[type="submit"] {
+        font-size: 14px;
+        padding: 8px 12px;
     }
 }

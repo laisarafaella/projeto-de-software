@@ -10,7 +10,6 @@ body {
 
 main {
     padding: 0% 20%;
-    margin-bottom: 7rem;
 }
 
 .coisarandom {
@@ -27,6 +26,8 @@ main {
     align-items: center;
     font-weight: bold;
     margin-left: 5%;
+    flex-wrap: wrap;
+    gap: 5px;
 }
 
 #destaque1 {
@@ -90,13 +91,6 @@ main {
     margin: 20px 0px;
 }
 
-.NFEForm {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    width: 80%;
-    margin-bottom: 20px;
-}
 
 .cadastrarBtn {
     width: 300px;

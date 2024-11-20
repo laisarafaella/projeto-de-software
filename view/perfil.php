@@ -7,7 +7,7 @@ function geraPerfil()
 {
     $id = $_SESSION['id'];
     // Interpolação de strings
-    $sql = 'SELECT id, nome, sobrenome, email, data_nascimento FROM usuarios WHERE id = ' . $id;
+    $sql = 'SELECT * FROM usuarios WHERE id = ' . $id;
     $stmt = FabricaConexao::Conexao()->prepare($sql);
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_CLASS);
@@ -25,20 +25,20 @@ function geraPerfil()
     <link rel="stylesheet" href="./css/footer.css" />
     <link rel="stylesheet" href="./css/responsividade.css" />
     <link rel="stylesheet" href="./css/perfil.css" />
-    <script src="./js/dropdown.js"></script>
+    <script src="./js/app.js" defer></script>
     <!-- Kit do fontawesome para ícones -->
     <script src="https://kit.fontawesome.com/b4d8cbf4fd.js" crossorigin="anonymous"></script>
-    <title>Sportsync - Cadastro</title>
+    <title>Sportsync - Perfil</title>
 </head>
 
 <body class="inter">
     <header>
-        <ul class="nav-bar">
-            <li class="logo jockey-one-regular"><a href="#">SPORTSYNC</a></li>
+        <ul class="header">
+            <li class="logo jockey-one-regular"><a href="../index.php">SPORTSYNC</a></li>
             <li><a href="../index.php">Home</a></li>
-            <li><a href="#">Instituições</a></li>
-            <li><a href="#">Associe-se</a></li>
-            <li><a href="#">Parceiros</a></li>
+            <li><a href="ranking.php">Ranking</a></li>
+            <li><a href="planos.php">Planos</a></li>
+            <li><a href="parceiros.php">Parceiros</a></li>
             <?php
             if ($_SESSION['usuario'] == null || $_SESSION['usuario'] == false) {
                 header("Location: login.php");
@@ -50,19 +50,36 @@ function geraPerfil()
             }
             ?>
         </ul>
-        <div class="dropmenu">
-            <span class="logo jockey-one-regular">SPORTSYNC</span>
-            <div class="dropdown">
-                <img onclick="Dropdown()" class="dropbtn" src="./icons/bars-solid.svg" />
-                <div id="myDropdown" class="dropdown-content">
-                    <a href="index.html">Home</a>
-                    <a href="#">Instituições</a>
-                    <a href="#">Associe-se</a>
-                    <a href="#">Parceiros</a>
-                    <a href="cadastro.html">Cadastrar</a>
-                    <a href="login.html">Login</a>
-                </div>
-            </div>
+        <!-- Coloquei esse trem da seção, só pra ter uma ideia do q o fernando falou-->
+        <ul class="mheader">
+            <li class="logo jockey-one-regular"><a href="../index.php">SPORTSYNC</a></li>
+            <?php
+            if ($_SESSION['usuario'] == null || $_SESSION['usuario'] == false) {
+                header("Location: login.php");
+            } else {
+                $linhas = geraPerfil();
+                foreach ($linhas as $linha) {
+                    echo "<li><b><a href='perfil.php'>" . $linha->nome . "</a></b></li>";
+                }
+            }
+            ?>
+        </ul>
+        <img onclick="menu()" class="dropbtn menu" src="./assets/bars-solid.svg" alt="Menu">
+        <div id="dropdown" class="dropdown-content">
+                <a href="../index.php">Home</a>
+                <a href="ranking.php">Ranking</a>
+                <a href="planos.php">Planos</a>
+                <a href="parceiros.php">Parceiros</a>
+                <?php
+                if ($_SESSION['usuario'] == null || $_SESSION['usuario'] == false) {
+                    header("Location: login.php");
+                } else {
+                    $linhas = geraPerfil();
+                    foreach ($linhas as $linha) {
+                        echo "<li><b><a href='perfil.php'>" . $linha->nome . "</a></b></li>";
+                    }
+                }
+                ?>
         </div>
     </header>
     <?php
@@ -72,10 +89,10 @@ function geraPerfil()
     </div>
     <main class="profile-container">
         <div class="column photo-column">
-            <img src="avatar.png" alt="Foto do Usuário" class="profile-photo">
-            <button class="upload-photo-btn">
+            <img src="./assets/avatar.png" alt="Foto do Usuário" class="profile-photo">
+            <!-- <button class="upload-photo-btn">
                 <i class="fa-solid fa-upload"></i> Carregar Foto
-            </button>
+            </button> -->
         </div>
         <div class="column info-column">
             <div class="user-info">
@@ -85,16 +102,30 @@ function geraPerfil()
                 echo "<div><b>Email:</b>";
                 echo "<br>" . $linha->email . "</div>";
                 echo "<div><b>Data de Nascimento:</b>";
-                echo "<br>" . $linha->data_nascimento . "</div>";
+                echo "<br>" . date('d/m/Y', strtotime($linha->data_nascimento )) . "</div>";   
+                echo "<div><b>CPF:</b>";
+                echo "<br>" . $linha->cpf . "</div>";
+                echo "<div><b>CEP:</b>";
+                echo "<br>" . $linha->cep . "</div>";
+                echo "<div><b>Telefone:</b>";
+                echo "<br>" . $linha->telefone . "</div>";
+                echo "<div><b>Pontos:</b>";
+                echo "<br>" . $linha->pontos . "</div>";
                 ?>
             </div>
         </div>
         <div class="column address-column">
-            <button class="edit-profile-btn"><a href="editar_perfil.php?id='<?php echo $linha->id ?>'">Editar</a><i
-                    class="fa-solid fa-pencil"></i></button>
-            <button class="edit-profile-btn"><a href="../controller/sair_conta.php">Sair</a></button>
+            <button class="edit-profile-btn"><a href="editar_perfil.php?id=<?php echo $linha->id ?>">Editar</a><i
+            class="fa-solid fa-pencil"></i></button>
             <button class="edit-profile-btn"><a href="./cadastrar_nfe.php">Cadastrar NFE</a></button>
             <button class="edit-profile-btn"><a href="./minhas_nfes.php">Minhas NFEs</a></button>
+            <button class="edit-profile-btn"><a href="./extrato.php">Extrato</a></button>
+            <button class="edit-profile-btn"><a href="./pagamento.php">Pagamento</a></button>
+            <button class="edit-profile-btn"><a href="./doar.php">Doação</a></button>
+            <button class="edit-profile-btn"><a href="./gerar_cupom.php">Gerar Cupom</a></button>
+            <button class="edit-profile-btn"><a href="./meus_cupons.php">Meus Cupons</a></button>
+            <button class="edit-profile-btn"><a href="../controller/sair_conta.php">Sair</a></button>
+            <button class="edit-profile-btn"><a href="../controller/deletar_conta.php">Deletar</a></button>
         </div>
     </main>
     <footer>
@@ -102,17 +133,17 @@ function geraPerfil()
             <div class="footer-column">
                 <h3>Organização</h3>
                 <ul>
-                    <li><a href="#"><span id="destaque-f">Política de Privacidade</span></a></li>
-                    <li><a href="#">Diretrizes da comunidade</a></li>
-                    <li><a href="#">Fale conosco</a></li>
+                    <li><a href="politicas.php"><span id="destaque-f">Política de Privacidade</span></a></li>
+                    <li><a href="diretrizes.php">Diretrizes da comunidade</a></li>
+                    <li><a href="contato.php">Fale conosco</a></li>
                 </ul>
             </div>
             <div class="footer-column">
                 <h3>Recursos</h3>
                 <ul>
-                    <li><a href="#">Serviços</a></li>
-                    <li><a href="#">Seja um colaborador</a></li>
-                    <li><a href="#">Assine nossa newsletter</a></li>
+                    <li><a href="servicos.php">Serviços</a></li>
+                    <li><a href="planos.php">Seja um colaborador</a></li>
+                    <li><a href="parceiros.php">Parceiros</a></li>
                 </ul>
             </div>
             <div class="footer-column">
@@ -130,23 +161,11 @@ function geraPerfil()
             <p>Sportsync © 2024 - Todos os direitos reservados.</p>
         </div>
     </footer>
-
-    <script>
-        const iconmenu = document.getElementById("icon-menu");
-        const navlinks = document.getElementById("nav-links");
-        const closemenu = document.getElementById("close-menu")
-
-        iconmenu.addEventListener('click', function () {
-            if (navlinks.style.display === 'none') {
-                navlinks.style.display = 'block';
-            } else {
-                navlinks.style.display = 'none';
-            }
-        });
-        closemenu.addEventListener('click', function () {
-            navlinks.style.display = 'none';
-        });
-    </script>
+        <style type="text/css" href="index.css">
+        <?php include('./css/perfil.css'); ?>
+        <?php include('./css/header.css'); ?>
+        <?php include('./css/responsividade.css'); ?>
+    </style>
 </body>
 
 </html>

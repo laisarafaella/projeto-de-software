@@ -1,0 +1,90 @@
+.contact-main {
+    padding: 0% 20%;
+    margin-bottom: 7rem;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.contact {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.form-sections-contact {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.form-left-contact,
+.form-right-contact {
+    display: flex;
+    flex-direction: column;
+    width: 48%;
+}
+
+.inputCapsule-contact {
+    margin: 20px 0px;
+}
+
+.input-contact {
+    width: 100%;
+    padding: 4px;
+    border: none;
+    border-bottom: solid 1px #000;
+    font-size: 18px;
+}
+
+.textarea-container {
+    width: 100%;
+    margin-top: 20px;
+}
+
+textarea.input-contact {
+    resize: none;
+}
+
+.form-button-contact {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.submitBtn-contact {
+    color: #FFF;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    padding: 10px 40px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    background-image: linear-gradient(to right, hsl(215, 100%, 26%), hsl(215, 100%, 26%));
+    position: relative;
+    z-index: 1;
+}
+
+.submitBtn-contact::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(to right, hsl(215, 100%, 26%), hsl(215, 93%, 39%), hsl(215, 93%, 39%));
+    z-index: -1;
+    transition: opacity 0.5s linear;
+    opacity: 0;
+    border-radius: 4px;
+}
+
+.submitBtn-contact:hover::before {
+    opacity: 1;
+}  

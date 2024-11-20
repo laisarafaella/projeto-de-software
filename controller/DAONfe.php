@@ -2,6 +2,7 @@
 
 require_once "conexao.php";
 require_once "../model/nfe.php";
+require_once "geraPontos.php";
 
 class DAONfe {
     public function Inserir(NFE $n, $userId) {
@@ -16,7 +17,10 @@ class DAONfe {
         $stmt->bindValue(6,$n -> getValorTotal());
         $stmt->execute();
 
-        header('Location: ../view/perfil.php');
+        $gr = new geraPontos();
+
+        $gr->novosPontos($n);
+
     }
 
     public function LocalizarNfes($id)

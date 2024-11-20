@@ -1,0 +1,111 @@
+.container-cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 120px;
+    padding: 10%;
+}
+
+.card {
+    background-color: white;
+    box-shadow: 0 4px 10px rgb(132, 132, 132);
+    padding: 25px;
+    max-width: 300px;
+    text-align: center; 
+    padding-bottom: 12px;
+    position: relative;
+}
+
+.card .icon {
+    width: 70px;
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.card h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: normal; 
+    letter-spacing: 1.3px;
+}
+
+.beneficios {
+    list-style-type: none; 
+    margin: 20px 0;
+    padding-left: 20px;
+    text-align: left;
+}
+
+.beneficios li {
+    margin: 6px 0;
+    font-size: 13px;
+    color: black;
+    position: relative;
+    padding-left: 11px; 
+}
+
+.beneficios li::before {
+    content: '•'; 
+    color: #003E92; 
+    font-size: 1.2em; 
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.card hr {
+    border: none;
+    border-top: 1px solid rgb(41, 41, 41);
+    margin: 17px auto; 
+    width: 85%; 
+}
+.card button {
+    position: relative;
+    padding: 12px 19px;
+    font-size: 12px;
+    border: none;
+    border-radius: 2px;
+    background-image: linear-gradient(to right, hsl(215, 100%, 26%), hsl(215, 100%, 26%));
+    color: #FFF;
+    cursor: pointer;    
+    z-index: 1;
+}
+
+.card button::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(to right, hsl(215, 100%, 26%), hsl(215, 93%, 39%), hsl(215, 93%, 39%));
+    z-index: -1;
+    transition: opacity 0.5s linear;
+    opacity: 0;
+    border-radius: 4px;
+}
+
+.card button:hover::before {
+    opacity: 1;
+}
+
+.card button i {
+    margin-left: 5px;
+}
+
+.card a {
+    color: #fff;
+    text-decoration: none;
+}
+
+#anualmente{
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+#termos{
+    font-size: 11px;
+    margin-top: 34px;
+}

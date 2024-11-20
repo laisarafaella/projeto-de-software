@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./css/footer.css" />
     <link rel="stylesheet" href="./css/responsividade.css" />
     <!-- <link rel="stylesheet" href="./css/login.css" /> -->
-    <script src="./js/dropdown.js"></script>
+    <script src="./js/app.js" defer></script>
     <!-- Kit do fontawesome para icones -->
     <script src="https://kit.fontawesome.com/b4d8cbf4fd.js" crossorigin="anonymous"></script>
     <title>Sportsync - Login</title>
@@ -17,32 +17,30 @@
 
 <body class="inter">
     <header>
-        <ul class="nav-bar">
-            <li class="logo jockey-one-regular"><a href="#">SPORTSYNC</a></li>
+        <ul class="header">
+            <li class="logo jockey-one-regular"><a href="../index.php">SPORTSYNC</a></li>
             <li><a href="../index.php">Home</a></li>
-            <li><a href="#">Instituições</a></li>
-            <li><a href="#">Associe-se</a></li>
-            <li><a href="#">Parceiros</a></li>
+            <li><a href="ranking.php">Ranking</a></li>
+            <li><a href="planos.php">Planos</a></li>
+            <li><a href="parceiros.php">Parceiros</a></li>
             <li><a href="cadastro_usuario.php">Cadastrar</a></li>
-            <li><a href="perfil.php">Perfil</a></li>
             <li class="login"><a href="login.php">Login</a></li>
         </ul>
-        <div class="dropmenu">
-            <span class="logo jockey-one-regular">SPORTSYNC</span>
-            <div class="dropdown">
-                <img onclick="Dropdown()" class="dropbtn" src="./icons/bars-solid.svg" />
-                <div id="myDropdown" class="dropdown-content">
-                    <a href="../index.php">Home</a>
-                    <a href="#">Instituições</a>
-                    <a href="#">Associe-se</a>
-                    <a href="#">Parceiros</a>
-                    <a href="cadastro_usuario.php">Cadastrar</a>
-                    <li><a href="perfil.php">Perfil</a></li>
-                    <a href="login.php">Login</a>
-                </div>
-            </div>
+        <ul class="mheader">
+            <li class="logo jockey-one-regular"><a href="../index.php">SPORTSYNC</a></li>
+        </ul>
+        <img onclick="menu()" class="dropbtn menu" src="./assets/bars-solid.svg" alt="Menu">
+        <div id="dropdown" class="dropdown-content">
+            <a href="../index.php">Home</a>
+            <a href="ranking.php">Ranking</a>
+            <a href="planos.php">Planos</a>
+            <a href="parceiros.php">Parceiros</a>
+            <a href="cadastro_usuario.php">Cadastrar</a>
+            <a href="login.php">Login</a>
         </div>
     </header>
+
+    
     <main class="loginMain-a">
         <div class="tituloPag">
             <div class="coisarandom"></div>Login
@@ -53,11 +51,13 @@
             <label for="senha">Senha:</label>
             <input type="password" name="senha" placeholder="" required><br>
             <div class="esqueci">
-            <button class="btnEntrar" type="submit">Entrar</button>
-            <a href="./forgot_pass.php" id="esqueci">Esqueci a senha</a>
+                <button class="btnEntrar" type="submit">Entrar</button>
+                <a href="./recuperar_senha.php" id="esqueci">Esqueci a senha</a>
             </div>
         </form>
     </main>
+
+
     <footer>
         <div class="box-footer">
             <div class="footer-column">
@@ -71,9 +71,9 @@
             <div class="footer-column">
                 <h3>Recursos</h3>
                 <ul>
-                    <li><a href="#">Serviços</a></li>
-                    <li><a href="#">Seja um colaborador</a></li>
-                    <li><a href="#">Assine nossa newsletter</a></li>
+                    <li><a href="servicos.php">Serviços</a></li>
+                    <li><a href="#">Seja um sócio</a></li>
+                    <li><a href="parceiros.php">Parceiros</a></li>
                 </ul>
             </div>
             <div class="footer-column">
@@ -92,24 +92,12 @@
         </div>
     </footer>
 
-    <script>
-        const iconmenu = document.getElementById("icon-menu");
-        const navlinks = document.getElementById("nav-links");
-        const closemenu = document.getElementById("close-menu")
-
-        iconmenu.addEventListener('click', function () {
-            if (navlinks.style.display === 'none') {
-                navlinks.style.display = 'block';
-            } else {
-                navlinks.style.display = 'none';
-            }
-        });
-        closemenu.addEventListener('click', function () {
-            navlinks.style.display = 'none';
-        });
-    </script>
     <style type="text/css" href="index.css">
+        <?php include('./css/header.css'); ?>
         <?php include('./css/login.css'); ?>
+        <?php include('./css/footer.css'); ?>
+        <?php include('./css/responsividade.css'); ?>
+        <?php include('./css/general.css'); ?>
     </style>
 </body>
 

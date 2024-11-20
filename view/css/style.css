@@ -1,29 +1,35 @@
-body{
+body {
     margin: 0;
 }
+
 .section-ranking {
     position: relative;
-    width: 99.9%;
-    max-width: 100%;
+
     overflow: hidden;
-    margin-bottom: 6rem;
 }
 
-.ranking img {
+/*tava ranking antes*/
+.section-ranking img {
+    width: 100%; 
+}
+
+#bolaImg {
     width: 100%;
-    height: auto; 
-    display: block;
 }
 
 .text-section-ranking {
     position: absolute;
     top: 50%;
-    left: -20rem;
     transform: translateY(-50%);
-    width: 84%;
+    left: 8%;
     text-align: center;
     color: #fff;
     padding: 20px;
+}
+
+.text-section-ranking span {
+    font-size: 100%;
+    font-weight: 700;
 }
 
 .text-container {
@@ -33,19 +39,23 @@ body{
     gap: 20px; 
 }
 
+.text-container a {
+    color: #FFF;
+    text-decoration: none;
+}
+
 .text-container h1 {
     font-size: 40px;
     margin: 0; 
 }
 
 .text-container .action-btn {
-    padding: 10px 20px;
+    padding: 5% 7%;
     font-size: 1rem;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 10px 40px;
     font-size: 14px;
     border: none;
     border-radius: 2px;
@@ -54,6 +64,7 @@ body{
     cursor: pointer;    
     z-index: 1;
 }
+
 .action-btn::before {
     position: absolute;
     content: "";
@@ -79,20 +90,23 @@ body{
 .text-container .action-btn:hover {
     background-color: hsl(215, 93%, 39%);
 }
+
 .section-conheça {
     display: grid;
     grid-template-columns: auto 1fr;
     color: black;
     margin-left: 15%;
     margin-top: 3%;
-  }
-  .text-conheça {
-    font-size: 50px;
+}
+
+.text-conheça {
     width: 73%;
+    font-size: 50px;
     font-weight: 700;
     opacity: 0; 
     animation: fadeInText 2s ease forwards;
-  }
+}
+
   @keyframes fadeInText {
     to {
       opacity: 1; 
@@ -102,13 +116,14 @@ body{
     display: grid;
     grid-template-rows: auto auto;
   }
-  #button-conheça {
+  #button-conheca {
     width: 170px;
     height: 40px;
     border-radius: 2px;
     padding: 15px;
     font-size: 20px;
     color: white;
+    margin-top: 50px;
     cursor: pointer;
     font-weight: 400;
     border: 1px solid rgba(255, 255, 255, 0.30);
@@ -119,22 +134,12 @@ body{
     font-family: "League Spartan", sans-serif;
     background-image: linear-gradient(to right, hsl(215, 100%, 26%), hsl(215, 100%, 26%));
   }
-  /* #button-conheça::before {
-    position: absolute;
-    content: "";
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-image: linear-gradient(to right, hsl(215, 100%, 26%), hsl(215, 93%, 39%), hsl(215, 93%, 39%));
-    z-index: -1;
-    transition: opacity 0.5s linear;
-    opacity: 0;
-    border-radius: 4px;
+
+  #button-conheca a {
+    color: #FFF;
+    text-decoration: none;
   }
-  #button-conheça:hover::before {
-    opacity: 1;
-  } */
+
   .img-homem video {
     width: 450px;
     margin-left: -20%;
@@ -142,9 +147,11 @@ body{
     opacity: 0;
     animation: fadeIn 1s ease forwards;
   }
+
   @keyframes fadeIn {
     to { opacity: 1; }
   }
+
 .box-text {
     border: 1px solid rgba(255, 255, 255, 0.30);
     width: 60%;
@@ -160,12 +167,14 @@ body{
     backdrop-filter: blur(10px);
     margin-bottom: 120px;
 }
+
 .plano-sessao {
     text-align: center;
     padding: 50px;
     background-color: #EFF7FF;
     overflow: hidden; 
 }
+
 .texto-central h1 {
     font-size: 2.5em;
     font-weight: bold;
@@ -177,13 +186,16 @@ body{
     margin-bottom: 50px;
     color: black;
 }
+
 .texto-central span{
     color: #003E92;
     font-weight: bold;
 }
+
 .cards-container {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     gap: 120px;
 }
 
@@ -265,6 +277,12 @@ body{
 .card button i {
     margin-left: 5px;
 }
+
+.card a {
+    color: #fff;
+    text-decoration: none;
+}
+
 #anualmente{
     font-size: 12px;
     margin-top: 5px;
@@ -272,4 +290,27 @@ body{
 #termos{
     font-size: 11px;
     margin-top: 34px;
+}
+
+.banner-section {
+    padding: 0% 10%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.title {
+    width: 50%;
+    font-size: 50px;
+    font-weight: 700;
+    opacity: 0; 
+    animation: fadeInText 2s ease forwards;
+}
+
+@media screen and (max-width: 1254px) {
+    .title {
+        width: 100%;
+        font-size: 50px;
+    }
 }

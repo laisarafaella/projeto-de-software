@@ -1,0 +1,230 @@
+.main-cupom {
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.cupom-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    border: 0.5px solid #000;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 700px;
+    gap: 20px;
+}
+
+
+.voucher{
+    width: 400px;
+    height: 200px;
+    background-color: #E1EBF6;
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 60%);
+    display: flex;
+    background-image: url(./assets/percentageBackground.svg);
+}
+
+.dotted{
+    width: 30%;
+    height: 100%;
+    border-right: dashed 2px #000;
+    display: flex;
+    align-items: center;
+}
+
+.elipse {
+    float: left;
+    width: 100px;
+    height: 100px;
+    margin: 0px;
+    shape-outside: circle(50% at 30%);
+    clip-path: circle(50% at 0%);
+    background: #fff;
+}
+
+.content {
+    width: 70%;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 30% 15% 55%;
+    grid-template-areas: "discount discount-info"
+        "description description"
+        "info-points info-points";
+}
+
+.discount {
+    grid-area: discount;
+    font-size: 44px;
+    font-weight: bold;
+    color: #000;
+    margin-left: 10px;
+    display: flex;
+    align-items: flex-end;
+}
+
+.discount-info{
+    grid-area: discount-info;
+    font-size: 20px;
+    font-weight: bold;
+    color: #FF0000;
+    margin-left: 10px;
+    display: flex;
+    align-items: flex-end;
+}
+
+.description {
+    grid-area: description;
+    font-size: 20px;
+    font-weight: bold;
+    color: #000;
+    margin-left: 10px;
+    display: flex;
+    align-items: flex-end;
+}
+
+.info-points {
+    grid-area: info-points;
+    font-size: 16px;
+    font-weight: bold;
+    color: #000;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.tape {
+    background-color: #0066FF;
+    color: #fff;
+    padding: 10px;
+}
+
+.cupom-info {
+    margin: 0px 10px;
+}
+
+.cupom-info h2 {
+    font-size: 1.4rem;
+    color: #00387e;
+    margin-bottom: 5px;
+    font-style: italic;
+}
+
+.cupom-info p {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.codigo-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    margin-top: 20px;
+}
+
+.codigo-cupom {
+    width: 500px;
+    padding: 10px;
+    padding-right: 50px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    text-align: center;
+    margin-bottom: 10px;
+    position: relative;
+    word-wrap: break-word;
+}
+
+.codigo-container button {
+    position: absolute;
+    right: 10px;
+    top: 40%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+}
+
+.codigo-container button img {
+    width: 100%;
+    height: 100%;
+}
+
+.problema-link {
+    font-size: 0.9rem;
+    text-decoration: underline;
+    color: #003E92;
+    position: absolute;
+    right: -5px;
+    top: 42px;
+}
+
+.btns {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.btns a {
+    color: #FFF;
+    text-decoration: none;
+}
+
+.btns button {
+    margin: 10px 10px
+}
+
+.cupom-btn {
+    color: #FFF;
+    margin-top: 20px;
+    font-size: 20px;
+    padding: 10px 10px;
+    border-radius: 2px;
+    border: none;
+    cursor: pointer;
+    background-image: linear-gradient(to right, hsl(215, 100%, 26%), hsl(215, 100%, 26%));
+    position: relative;
+    z-index: 1;
+}
+
+.cupom-btn::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(to right, hsl(215, 100%, 26%), hsl(215, 93%, 39%), hsl(215, 93%, 39%));
+    z-index: -1;
+    transition: opacity 0.5s linear;
+    opacity: 0;
+    border-radius: 4px;
+}
+
+.cupom-btn:hover::before {
+    opacity: 1;
+}
+
+.cimaCupom {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.main-cupom {
+    margin-bottom: 50px;
+}

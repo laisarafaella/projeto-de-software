@@ -3,54 +3,67 @@ h1 {
     text-align: center; 
     margin: 0 auto;
 }
+
 .input-wrapper {
     position: relative;
     width: 100%; 
 }
-.input {
-    width: 80%; 
+
+.inputNfe {
     border-radius: 0; 
     border: none;
     border-bottom: solid 1px #000; 
     font-size: 20px;
     padding: 2px;
-    margin-top: 6px;
+    margin-bottom: 50px;    
 }
-.inputCapsule {
+
+.inputDataEmissao {
+    width: 250px;
+}
+
+.inputCapsule2 {
     margin: 16px 0px;
     position: relative; 
 }
-.conteudo {
+
+.conteudoNfe {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 40px;
 }
+
 .cadastroForm {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
 }
+
 .form-sections {
     display: flex;
     width: 100%;
     justify-content: space-between;
 }
+
 .form-left, .form-right {
     display: flex;
     flex-direction: column;
     width: 48%; 
 }
+
 .form-button {
     margin-top: 20px;
     width: 100%;
     display: flex;
     justify-content: center;
 }
-label{
+
+label {
     font-size: 17px;
 }
+
 .date-wrapper {
     position: relative;
     width: 100%;
@@ -92,9 +105,10 @@ label{
 .date-input:not(:placeholder-shown) + .date-icon + .date-placeholder {
     display: none;
 }
+
 .cadastrarBtn {
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     font-size: 20px;
     padding: 5px 7rem;
     border-radius: 2px;
@@ -104,6 +118,7 @@ label{
     position: relative;
     z-index: 1;
 }
+
 .cadastrarBtn::before {
     position: absolute;
     content: "";
@@ -121,9 +136,59 @@ label{
 .cadastrarBtn:hover::before {
     opacity: 1;
 }
-.cadastrarBtn a{
+
+.cadastrarBtn a {
     text-decoration: none;
     color: white;
 }
 
+.mainNFE {
+    padding: 0;
+    margin-top: 50px;
+}
 
+.contNfe {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    height: 100vh; 
+}
+
+.NFEForm {
+    display: flex;
+    flex-direction: column;
+    margin-top: 60px;
+    width: 100%;
+    /* border: solid 4px red; */
+}
+
+.inputs {
+    display: flex;
+    justify-content: center;
+}
+
+.inputs > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+}
+
+div > label {
+    font-weight: bold;
+}
+
+.NFEForm > div {
+    display: flex;
+    justify-content: center;
+}
+
+.lado1 {
+    padding-left: 15%;
+}
+
+.lado2 {
+    padding-right: 15%;
+}

@@ -1,8 +1,8 @@
-
 .input-wrapper {
     position: relative;
-    width: 100%; 
+    width: 100%;
 }
+
 .input {
     width: 80%; 
     border-radius: 0; 
@@ -12,15 +12,21 @@
     padding: 2px;
     margin-top: 6px;
 }
+
 .inputCapsule {
     margin: 16px 0px;
+    position: relative; 
+}
+
+.inputCapsule7 {
+    margin: 20px 0px;
     position: relative; 
 }
 
 .eye {
     position: absolute;
     top: 50%;
-    left: 78%;
+    right: 10%;
     transform: translateY(-50%);
     cursor: pointer;
     padding: 0; 
@@ -36,45 +42,66 @@
     flex-direction: column;
     align-items: center;
     margin-top: 40px;
+    margin-bottom: 60px;
 }
+
 .loginForm {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
 }
+
 .form-sections {
     display: flex;
     width: 100%;
     justify-content: space-between;
+    gap: 50px;
 }
+
 .form-left, .form-right {
     display: flex;
     flex-direction: column;
     width: 48%; 
 }
+
 .form-button {
     margin-top: 20px;
     width: 100%;
     display: flex;
     justify-content: center;
 }
-label{
+
+.form-bottom {
+    width: 100%;
+}
+
+label {
     font-size: 17px;
 }
+
 .date-wrapper {
     position: relative;
     width: 100%;
 }
+
 .date-input {
-    width: 85%;
+    /*width: 85%;
     padding: 6px 40px; 
     border-radius: 4px;
     border: 1px solid #B0B0B0; 
     background-color: #F0F0F0;
     font-size: 12px;
     color: #333;
-    box-sizing: border-box; 
+    box-sizing: border-box;*/
+
+    width: 80%; 
+    border-radius: 0; 
+    border: none;
+    border-bottom: solid 1px #000; 
+    font-size: 20px;
+    padding: 2px;
+    margin-top: 6px;
 }
 
 .date-icon {
@@ -102,6 +129,7 @@ label{
 .date-input:not(:placeholder-shown) + .date-icon + .date-placeholder {
     display: none;
 }
+
 .logarBtn {
     color: #FFF;
     margin-top: 20px;
@@ -115,6 +143,7 @@ label{
     position: relative;
     z-index: 1;
 }
+
 .logarBtn::before {
     position: absolute;
     content: "";
@@ -136,18 +165,22 @@ label{
 p {
     font-size: 15px;
 }
-.esqueci{
+
+.esqueci {
     margin-top: 30px;
 }
+
 #destaque {
     color: #0066FF;
     text-decoration: underline;
 }
-.pergunta{
+
+.pergunta {
     font-size: 15px;
     margin-top: -4px;
 }
-.contTitulo{
+
+.contTitulo {
     color: #003E92;
     font-weight: bold;
     font-size: 19px;
@@ -155,6 +188,7 @@ p {
     justify-content: center;
     margin-bottom: 30px;
 }
+
 .termos {
     margin-top: 20px;
     font-size: 16px;
@@ -176,7 +210,7 @@ p {
     font-size: 16px;
 }
 
-#destaque {
+#destaque a {
     color: #003E92;
     font-weight: bold;
 }
@@ -186,3 +220,12 @@ p {
     font-weight: bold;
 }
 
+.senhainput {
+    width: 850px;
+    border-radius: 0; 
+    border: none;
+    border-bottom: solid 1px #000; 
+    font-size: 20px;
+    padding: 2px;
+    margin-top: 6px;
+}

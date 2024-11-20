@@ -1,0 +1,85 @@
+.conteudo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 80px;
+    padding: 0 16px;
+}
+
+.subtitulo {
+    font-size: 1.4rem;
+    text-align: center;
+    margin-top: 1.4rem;
+    font-weight: 600;
+}
+
+.donationForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 100px;
+}
+
+.form-sections-donation {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    gap: 2rem;
+}
+
+.inputCapsule4 {
+    width: 100%;
+}
+
+.inputDoacao {
+    width: 100%;
+    border-radius: 0;
+    border: none;
+    border-bottom: solid 1px #000;
+    font-size: 18px;
+    padding: 2px;
+    margin-top: 20px;
+    box-sizing: border-box;
+}
+
+
+.form-button {
+    margin-top: 1rem;
+}
+
+.form-button .btnDonate {
+    color: #FFF;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    padding: 10px 15px;
+    border-radius: 2px;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    background: hsl(215, 93%, 39%);
+    transition: background-color 0.5s linear;
+}
+
+.form-button .btnDonate::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: linear-gradient(to right, hsl(215, 100%, 26%), hsl(215, 93%, 39%));
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.5s linear;
+    border-radius: 2px;
+}
+
+.form-button .btnDonate:hover::before {
+    opacity: 1;
+}
