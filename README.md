@@ -32,7 +32,7 @@ C:\xampp\htdocs
 ## 5. Clone o repositório na pasta
 
 ```bash
-git clone https://github.com/becanmccotemig/iris
+git clone https://github.com/laisarafaella/projeto-de-software
 ```
 
 ## 6. Abra phpMyAdmin no navegador
