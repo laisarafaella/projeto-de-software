@@ -8,7 +8,10 @@ O objetivo principal é permitir que usuários acumulem pontos ao realizarem com
 #### MySQL
 #### XAMPP, PHPMyAdmin
 
-<!-- - [Acesse as funcionalidades e os diagramas ](https://trello.com/invite/b/662bdf523aedaf1475636c05/ATTIe2e28d79bcff92862c9d6d07f15fb28e62A986E9/projeto-de-software) -->
+## Links
+
+- [Acesse as funcionalidades e os diagramas ](https://trello.com/invite/b/662bdf523aedaf1475636c05/ATTIe2e28d79bcff92862c9d6d07f15fb28e62A986E9/projeto-de-software)
+- [Acesse o nosso projeto](https://www.canva.com/design/DAGS0Il1ijk/7Gg_C19xs4WLusMuoMmiKw/edit?utm_content=DAGS0Il1ijk&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 
 # 🚧 Execução
 Para execução do sistema é necessário seguir o passo a passo listado abaixo:
