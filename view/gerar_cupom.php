@@ -3,6 +3,8 @@ header('Content-Type: text/html; charset=utf-8');
 session_start();
 include_once '../controller/DAOUsuario.php';
 include_once '../controller/conexao.php';
+
+// recupera o perfil do usuário logado
 function geraPerfil()
 {
     $id = $_SESSION['id'];
@@ -40,6 +42,7 @@ function geraPerfil()
             <li><a href="planos.php">Planos</a></li>
             <li><a href="parceiros.php">Parceiros</a></li>
             <?php
+            // verificacao do usuário logado
             if ($_SESSION['usuario'] == null || $_SESSION['usuario'] == false) {
                 header("Location: login.php");
             } else {
@@ -61,6 +64,7 @@ function geraPerfil()
             <a href="planos.php">Planos</a>
             <a href="parceiros.php">Parceiros</a>
             <?php
+            // verificacao do usuário logado
             if ($_SESSION['usuario'] == null || $_SESSION['usuario'] == false) {
                 header("Location: login.php");
             } else {

@@ -1,0 +1,69 @@
+.receipty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 60px 0px;
+}
+
+.ladoA {
+    width: 50%;
+    padding-right: 20px;
+}
+
+.box {
+    width: 80%;
+    border: solid 1px black;
+    border-radius: 20px;
+    padding: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.box-header {
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.amount-info span {
+    font-size: 20px;
+}
+
+.purchase-info {
+    font-size: 14px;
+}
+
+.btn-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 30px 0px 10px 0px;
+}
+
+.btn-finalizar {
+    background-color: #003885;
+    border-radius: 10px;
+    border: none;
+    padding: 10px 20px;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1100px) {
+    .ladoB {
+        display: none;
+    }
+    
+    .ladoA {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .receipty {
+        padding: 0% 10%;
+    }
+}

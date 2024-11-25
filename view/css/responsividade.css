@@ -14,7 +14,7 @@
     }
 }
 
-/* Footer*/
+/* Footer */
 @media (max-width: 995px) {
     footer {
         flex-wrap: wrap;
@@ -124,7 +124,6 @@
     }
 }
 
-
 /* Parceiros*/
 
 @media screen and (min-width: 850px) {
@@ -132,7 +131,6 @@
         margin: 15px 0px;
     }
 }
-
 
 /* Politicas e Diretrizes*/
 
@@ -159,8 +157,6 @@
         font-size: 16px;
     }
 }
-
-
 
 /* Contato */
 
@@ -205,17 +201,10 @@
     }
 }
 
-
-
-
-
-
 /* Detalhes Ranking*/
 
 @media (max-width: 768px) {
 
-    
-    
     .detalhes-container {
         flex-direction: column;
         align-items: center;
@@ -275,7 +264,6 @@
     }
 }
 
-
 /* Extrato*/
 
 @media (max-width: 600px) {
@@ -294,7 +282,6 @@
     
     
 }
-
 
 /* Logista*/
 
@@ -334,63 +321,22 @@
     }
 }
 
-
-
-/* Cadastro*/
-
-@media (max-width: 768px) {
+@media (max-width: 1284px) { 
     .form-sections {
         flex-direction: column;
-        gap: 20px;
-    }
-
-    .form-left, .form-right {
-        width: 100%;
+        gap: 0px
     }
 
     .senhainput {
-        width: 400px;
+        width: 350px;
     }
 
-    .input, .date-input {
-        width: 100%;
-    }
+    .cadastro-pagina {
+        display: flex;
+        justify-content: center;
+    }   
 
-    .logarBtn {
-        width: 90%;
-        font-size: 18px;
-        padding: 10px;
-    }
-
-    .checkbox-group {
-        align-items: flex-start;
-    }
-
-    .checkbox-group input[type="checkbox"] {
-        margin-bottom: 5px;
-    }
-
-    .pergunta {
-        text-align: center;
-        font-size: 16px;
-        margin-top: 10px;
-    }
-
-    .conteudo {
-        margin: 20px 15px;
-    }
 }
-
-@media (max-width: 480px) {
-    /*Essa tela ainda nn consegui fazer/*/
-}
-
-
-
-
-
-
-
 
 /* Login */
 
@@ -494,25 +440,16 @@
     }
 }
 
-
-
-
-
 /* Cadastrar Nfe*/
 
 @media (max-width: 768px) {
     .contNfe {
-        height: auto;
         padding: 20px 10px; 
     }
 
     .inputs {
         flex-direction: column;
         align-items: center;
-    }
-
-    .inputDataEmissao {
-
     }
 
     .inputs > div {
@@ -532,14 +469,11 @@
         padding: 12px;
         font-size: 18px;
     }
-
     
     .containerBotao {
         display: flex;
         justify-content: center;
     }
-
-    
 }
 
 @media (max-width: 480px) {
@@ -558,12 +492,6 @@
         padding: 10px;
     }
 }
-
-
-
-
-
-
 
 /* Minhas Nfes*/
 
@@ -613,12 +541,7 @@
     }
 }
 
-
 /* Pagamento*/
-
-
-
-
 
 
 /* Doação*/
@@ -1080,3 +1003,7 @@
         padding: 8px 12px;
     }
 }
+
+
+
+/* Recibo - Finalizar*/

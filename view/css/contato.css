@@ -88,3 +88,7 @@ textarea.input-contact {
 .submitBtn-contact:hover::before {
     opacity: 1;
 }  
+
+textarea {
+    resize: none;
+}

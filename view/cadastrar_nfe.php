@@ -1,6 +1,8 @@
 <?php
 session_start();
 require_once '../controller/conexao.php';
+
+// geraPerfil() usa o ID da sessão para buscar informações do usuário no banco
 function geraPerfil()
 {
   $id = $_SESSION['id'];
@@ -20,7 +22,6 @@ function geraPerfil()
   <link rel="stylesheet" href="./css/header.css" />
   <link rel="stylesheet" href="./css/footer.css" />
   <link rel="stylesheet" href="./css/responsividade.css" />
-  <link rel="stylesheet" href="./css/cadastro-nfe.css">
   <script src="./js/app.js" defer></script>
   <!-- Kit do fontawesome para icones -->
   <script src="https://kit.fontawesome.com/b4d8cbf4fd.js" crossorigin="anonymous"></script>
@@ -35,9 +36,11 @@ function geraPerfil()
       <li><a href="planos.php">Planos</a></li>
       <li><a href="parceiros.php">Parceiros</a></li>
       <?php
+      // verificacao se o usuario está logado
       if ($_SESSION['usuario'] == null || $_SESSION['usuario'] == false) {
         header("Location: login.php");
       } else {
+        // se estiver, aparecerá o nome do usuario
         $linhas3 = geraPerfil();
         foreach ($linhas3 as $linha3) {
           echo "<li><b><a href='perfil.php'>" . $linha3->nome . "</a></b></li>";
@@ -55,6 +58,7 @@ function geraPerfil()
       <a href="planos.php">Planos</a>
       <a href="parceiros.php">Parceiros</a>
       <?php
+      // mesma verificacao
       if ($_SESSION['usuario'] == null || $_SESSION['usuario'] == false) {
         header("Location: login.php");
       } else {

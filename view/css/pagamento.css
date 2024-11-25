@@ -2,7 +2,7 @@
 .wrapper {
 	display: grid;
 	place-items: center;
-	height: 100vh;
+	margin: 20px 0px;
 }
 
 .wrapper .form-container {

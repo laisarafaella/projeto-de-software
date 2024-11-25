@@ -1,6 +1,9 @@
 <?php 
 session_start();
 require_once '../controller/conexao.php';
+
+
+// funcao que pega o id do usuario
 function geraPerfil()
 {
     $id = $_SESSION['id'];
@@ -38,6 +41,7 @@ function geraPerfil()
             <li><a href="parceiros.php">Parceiros</a></li>
             <?php
 
+            // verificando se está logado
             if(!isset($_SESSION['usuario']))
                 {
                 echo "<li><a href='cadastro_usuario.php'>Cadastrar</a></li>";
@@ -67,6 +71,7 @@ function geraPerfil()
             <a href="parceiros.php">Parceiros</a>
             <?php
 
+            // verificando se está logado
             if(!isset($_SESSION['usuario']))
                 {
                 echo "<li><a href='cadastro_usuario.php'>Cadastrar</a></li>";

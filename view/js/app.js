@@ -1,7 +1,12 @@
+// Menu responsivo
+
+// funcao responsável por exibir ou esconder o menu dropdown ao clicar no botão de menu
+
 function menu() {
   document.getElementById("dropdown").classList.toggle("show");
 }
 
+// evento que escuta qualquer clique na janela
 window.onclick = function (event) {
   if (!event.target.matches(".dropbtn")) {
     var dropdowns = document.getElementsByClassName("dropdown-content");

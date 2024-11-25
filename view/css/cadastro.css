@@ -1,10 +1,13 @@
+.cadastro-pagina {
+    padding: 0% 20%;
+}
+
 .input-wrapper {
     position: relative;
     width: 100%;
 }
 
 .input {
-    width: 80%; 
     border-radius: 0; 
     border: none;
     border-bottom: solid 1px #000; 

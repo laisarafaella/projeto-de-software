@@ -44,7 +44,7 @@
   </div>
 
 
-  <main>
+  <main class="cadastro-pagina">
     <div class="conteudo">
       <form method="POST" class="loginForm" action="../controller/gera_registro.php">
         <div class="form-sections">

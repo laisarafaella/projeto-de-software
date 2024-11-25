@@ -1,6 +1,8 @@
 <?php 
 session_start();
 require_once '../controller/conexao.php';
+
+// recupera o perfil do usuário logado no banco
 function geraPerfil()
 {
     $id = $_SESSION['id'];
@@ -40,7 +42,7 @@ function geraPerfil()
       <li><a href="planos.php">Planos</a></li>
       <li><a href="parceiros.php">Parceiros</a></li>
       <?php
-
+      // verificacao do usuario logado
       if(!isset($_SESSION['usuario']))
         {
           echo "<li><a href='cadastro_usuario.php'>Cadastrar</a></li>";
@@ -69,7 +71,7 @@ function geraPerfil()
         <a href="planos.php">Planos</a>
         <a href="parceiros.php">Parceiros</a>
         <?php
-
+        // mesma verificacao para o menu responsivo
         if(!isset($_SESSION['usuario']))
             {
             echo "<li><a href='cadastro_usuario.php'>Cadastrar</a></li>";

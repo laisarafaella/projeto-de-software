@@ -1,8 +1,8 @@
 .container-meusCupons {
     width: 80%;
     margin: 2rem auto;
-    margin-top: 100px;
-    margin-bottom: 100px;
+    margin-top: 120px;
+    margin-bottom: 150px;
     border-collapse: collapse;
     /*background-color: #000;*/
     border-radius: 8px;
@@ -34,7 +34,7 @@
 .btnVoltar {
     color: #FFF;
     margin-top: 20px;
-    margin-bottom: 100px;
+    margin-bottom: 170px;
     font-size: 20px;
     padding: 5px 4rem;
     border-radius: 2px;
@@ -46,6 +46,10 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+
+tr {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .btnVoltar::before {
@@ -64,4 +68,8 @@
 
 .btnVoltar:hover::before {
     opacity: 1;
+}
+
+a {
+    text-decoration: none;
 }

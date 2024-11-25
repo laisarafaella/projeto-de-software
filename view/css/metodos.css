@@ -1,0 +1,120 @@
+.my-payments {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    padding: 0px 10%;
+    margin-bottom: 250px;
+}
+
+.cartao {
+    background: rgb(0,102,255);
+    background: linear-gradient(150deg, rgba(0,102,255,1) 60%, rgba(0,61,153,1) 80%);
+    border-radius: 20px;
+    width: 340px;
+    height: 200px;
+    margin: 15px;
+}
+
+.cartao-botao {
+    background: rgb(0,102,255);
+    background: linear-gradient(150deg, rgba(0,102,255,1) 60%, rgba(0,61,153,1) 80%);
+    border-radius: 20px;
+    width: 340px;
+    height: 200px;
+    margin: 15px;
+    border: none;
+    padding: none;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.cartao-botao:hover {
+    transform: scale(1.04);
+}
+
+.bandeira {
+    height: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0px 20px;
+}
+
+.bandeira img {
+    height: 30%;
+}
+
+.conteudo-cartao {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 70%;
+    padding: 15px 20px 0px 20px;
+}
+
+.numero-cartao {
+    letter-spacing: 1px;
+    color: white;
+    font-size: 20px;
+}
+
+.titulo-validade {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    color: white;
+}
+
+.validade {
+    font-weight: bold;
+}
+
+.container-cartoes {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.titular {
+    font-size: 16px;
+}
+
+.validade {
+    font-size: 16px;
+    letter-spacing: 0.5px;
+}
+
+.add {
+    width: 340px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+    margin: 15px;
+}
+
+.add a {
+    text-decoration: none;
+}
+
+.add a button {
+    width: 200px;
+    height: 200px;
+    border: solid 1px #000;
+    border-radius: 50%;
+    font-size: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: transparent;
+    transition: 0.2s;
+}
+
+.add a button:hover {
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+}

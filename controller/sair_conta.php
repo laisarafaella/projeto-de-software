@@ -1,10 +1,13 @@
 <?php
 session_start();
 
-// Limpa todas as informações do usuário da sessão
+// logout do usuario
+
+// limpa todas as informações do usuário da sessão
 $_SESSION = array();
 
-// Se desejar, você também pode destruir a sessão completamente
+// pode destruir a sessão completamente
+// verifica se sessao com cookies, e removido
 if (ini_get("session.use_cookies")) {
     $params = session_get_cookie_params();
     setcookie(session_name(), '', time() - 42000,
@@ -13,10 +16,10 @@ if (ini_get("session.use_cookies")) {
     );
 }
 
-// Finalmente, destrua a sessão
+// finalmente, destrua a sessão
 session_destroy();
 
-// Redireciona o usuário para a página inicial
+// redireciona o usuário para a página inicial
 header("Location: ../index.php");
 exit;
 ?>

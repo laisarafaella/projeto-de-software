@@ -1,8 +1,11 @@
 <?php
 header('Content-Type: text/html; charset=utf-8');
 session_start();
-include_once '../controller/DAOUsuario.php';
 include_once '../controller/conexao.php';
+include_once '../controller/DAOUsuario.php';
+
+
+// funcao que busca o usuario pelo id e retorna
 function geraPerfil()
 {
     $id = $_SESSION['id'];
@@ -40,6 +43,7 @@ function geraPerfil()
             <li><a href="planos.php">Planos</a></li>
             <li><a href="parceiros.php">Parceiros</a></li>
             <?php
+            // verificacao do usuario autenticado
             if ($_SESSION['usuario'] == null || $_SESSION['usuario'] == false) {
                 header("Location: login.php");
             } else {
@@ -50,10 +54,10 @@ function geraPerfil()
             }
             ?>
         </ul>
-        <!-- Coloquei esse trem da seção, só pra ter uma ideia do q o fernando falou-->
+        <!-- Coloquei esse trem da seção, só pra ter uma ideia-->
         <ul class="mheader">
             <li class="logo jockey-one-regular"><a href="../index.php">SPORTSYNC</a></li>
-            <?php
+            <!--
             if ($_SESSION['usuario'] == null || $_SESSION['usuario'] == false) {
                 header("Location: login.php");
             } else {
@@ -62,7 +66,7 @@ function geraPerfil()
                     echo "<li><b><a href='perfil.php'>" . $linha->nome . "</a></b></li>";
                 }
             }
-            ?>
+        -->
         </ul>
         <img onclick="menu()" class="dropbtn menu" src="./assets/bars-solid.svg" alt="Menu">
         <div id="dropdown" class="dropdown-content">
@@ -71,6 +75,7 @@ function geraPerfil()
                 <a href="planos.php">Planos</a>
                 <a href="parceiros.php">Parceiros</a>
                 <?php
+                // verificacao do usuario autenticado
                 if ($_SESSION['usuario'] == null || $_SESSION['usuario'] == false) {
                     header("Location: login.php");
                 } else {
@@ -95,6 +100,7 @@ function geraPerfil()
             </button> -->
         </div>
         <div class="column info-column">
+            <!-- infos do usuário -->
             <div class="user-info">
                 <?php
                 echo "<div><b>Nome:</b>";
@@ -111,21 +117,31 @@ function geraPerfil()
                 echo "<br>" . $linha->telefone . "</div>";
                 echo "<div><b>Pontos:</b>";
                 echo "<br>" . $linha->pontos . "</div>";
+                echo "<div><b>Plano:</b>";
+                if($linha->idPlano_fk == 2) {
+                    echo "<br>Plano Esportista</div>";
+                }
+                else if($linha->idPlano_fk == 3) {
+                    echo "<br>Plano Atleta</div>";
+                } else {
+                    echo "<br>Plano Padrão</div>";
+                }
                 ?>
             </div>
         </div>
         <div class="column address-column">
-            <button class="edit-profile-btn"><a href="editar_perfil.php?id=<?php echo $linha->id ?>">Editar</a><i
-            class="fa-solid fa-pencil"></i></button>
-            <button class="edit-profile-btn"><a href="./cadastrar_nfe.php">Cadastrar NFE</a></button>
-            <button class="edit-profile-btn"><a href="./minhas_nfes.php">Minhas NFEs</a></button>
-            <button class="edit-profile-btn"><a href="./extrato.php">Extrato</a></button>
-            <button class="edit-profile-btn"><a href="./pagamento.php">Pagamento</a></button>
-            <button class="edit-profile-btn"><a href="./doar.php">Doação</a></button>
-            <button class="edit-profile-btn"><a href="./gerar_cupom.php">Gerar Cupom</a></button>
-            <button class="edit-profile-btn"><a href="./meus_cupons.php">Meus Cupons</a></button>
-            <button class="edit-profile-btn"><a href="../controller/sair_conta.php">Sair</a></button>
-            <button class="edit-profile-btn"><a href="../controller/deletar_conta.php">Deletar</a></button>
+            <!-- botões de ações -->
+            <a href="editar_perfil.php?id=<?php echo $linha->id ?>"><button class="edit-profile-btn">Editar<i class="fa-solid fa-pencil"></i></button></a>
+            <a href="./cadastrar_nfe.php"><button class="edit-profile-btn">Cadastrar NFE</button></a>
+            <a href="./minhas_nfes.php"><button class="edit-profile-btn">Minhas NFEs</button></a>
+            <a href="./extrato.php"><button class="edit-profile-btn">Extrato</button></a>
+            <a href="./pagamento.php"><button class="edit-profile-btn">Pagamento</button></a>
+            <a href="./meus_metodos.php"><button class="edit-profile-btn">Formas de pagamento</button></a>
+            <a href="./doar.php"><button class="edit-profile-btn">Doação</button></a>
+            <a href="./gerar_cupom.php"><button class="edit-profile-btn">Gerar Cupom</button></a>
+            <a href="./meus_cupons.php"><button class="edit-profile-btn">Meus Cupons</button></a>
+            <a href="../controller/sair_conta.php"><button class="edit-profile-btn">Sair</button></a>
+            <a href="../controller/deletar_conta.php"><button class="edit-profile-btn">Deletar</button></a>
         </div>
     </main>
     <footer>

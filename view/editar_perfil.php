@@ -4,13 +4,19 @@ include_once "../model/usuario.php";
 include_once '../controller/DAOUsuario.php';
 include_once "../controller/conexao.php";
 
+// instanciacao de classes
 $usuarioDAO = new DAOUsuario();
 $usuario = new Usuario();
 
+// processo de alteracao
 if (isset($_POST['alterar'])) {
+    // converte a string de data enviada pelo form
     $dt = date('Y-m-d', strtotime($_POST['data_nascimento']));
     $date = new DateTime($dt);
+    // calcula a diferença entre a data atual e a data de nascimento fornecida
     $interval = $date->diff( new DateTime( date('Y-m-d') ) );
+
+    // validacao da idade, se é maior de 18
     if($interval->format('%Y') >= 18){
         $usuario->setId($id = $_GET['id']);
         $usuario->setNome($_POST['nome']);
@@ -20,6 +26,8 @@ if (isset($_POST['alterar'])) {
         $usuario->setCpf($_POST['cpf']);
         $usuario->setCep($_POST['cep']);
         $usuario->setTelefone($_POST['telefone']);
+
+        // chama o método da classe DAOUsuario para salvar as alterações no banco
         $usuarioDAO->Atualizar($usuario);
         header("Location: perfil.php");
     }
@@ -30,6 +38,7 @@ if (isset($_POST['alterar'])) {
 
 }
 
+// busca os dados do usuário com base no id, retornando um array com as infos
 $ids = $_GET['id'];
 $linhas = $usuarioDAO->Localizar($ids);
 
@@ -37,6 +46,8 @@ $linhas = $usuarioDAO->Localizar($ids);
 
 session_start();
 require_once '../controller/conexao.php';
+
+// recupera o perfil do usuário logado no banco
 function geraPerfil()
 {
     $id = $_SESSION['id'];
@@ -76,6 +87,7 @@ function geraPerfil()
         <li><a href="planos.php">Planos</a></li>
         <li><a href="parceiros.php">Parceiros</a></li>
         <?php
+        // verifica se o usuário está logado
             if ($_SESSION['usuario'] == null || $_SESSION['usuario'] == false) {
                 header("Location: login.php");
             } else {
@@ -96,6 +108,7 @@ function geraPerfil()
         <a href="planos.php">Planos</a>
         <a href="parceiros.php">Parceiros</a>
         <?php
+        // verifica se o usuário está logado no menu responsivo
             if ($_SESSION['usuario'] == null || $_SESSION['usuario'] == false) {
                 header("Location: login.php");
             } else {
@@ -116,7 +129,9 @@ function geraPerfil()
             <div class="inputCapsule">
                 <label for="exampleInputEmail1" class="form-label">Nome:</label>
                 <?php
+                // itera sobre o array $linhas para preencher os campos do form
                 foreach ($linhas as $linha) {
+                    // pré-preenche o campo
                     echo '<input type="text" class="input" name="nome" value="' . $linha->nome . '">';
                     ?>
                 </div>
@@ -129,12 +144,14 @@ function geraPerfil()
                 <div class="inputCapsule">
                     <label for="exampleInputEmail1" class="form-label">E-mail:</label>
                     <?php
+                    // exibe o e-mail atual do usuário no campo
                     echo '<input type="text" name="email" class="input" value="' . $linha->email . '">';
                     ?>
                 </div>
                 <div class="inputCapsule">
                     <label for="exampleInputEmail1" class="form-label">Data de Nascimento:</label>
                     <?php
+                    // o valor de data_nascimento do banco é exibido
                     echo '<input type="date" name="data_nascimento" class="input" value="' . $linha->data_nascimento . '">';
                     ?>
                     <div class="inputCapsule">

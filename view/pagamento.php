@@ -1,6 +1,9 @@
 <?php 
 session_start();
 require_once '../controller/conexao.php';
+
+
+// função para pegar o usuario pelo id e retornar
 function geraPerfil()
 {
     $id = $_SESSION['id'];
@@ -22,7 +25,6 @@ function geraPerfil()
     <link rel="stylesheet" href="./css/general.css" />
     <link rel="stylesheet" href="./css/footer.css" />
     <link rel="stylesheet" href="./css/responsividade.css" />
-    <link rel="stylesheet" href="./css/pagamento.css">
     <script src="./js/app.js"></script>
     <!-- Kit do fontawesome para ícones -->
     <script src="https://kit.fontawesome.com/b4d8cbf4fd.js" crossorigin="anonymous"></script>
@@ -38,6 +40,7 @@ function geraPerfil()
             <li><a href="planos.php">Planos</a></li>
             <li><a href="parceiros.php">Parceiros</a></li>
             <?php
+            // verificacao do usuário logado
             if ($_SESSION['usuario'] == null || $_SESSION['usuario'] == false) {
                 header("Location: login.php");
             } else {
@@ -58,6 +61,7 @@ function geraPerfil()
             <a href="planos.php">Planos</a>
             <a href="parceiros.php">Parceiros</a>
             <?php
+            // verificacao do usuário logado
             if ($_SESSION['usuario'] == null || $_SESSION['usuario'] == false) {
                 header("Location: login.php");
             } else {
@@ -70,12 +74,10 @@ function geraPerfil()
         </div>
     </header>
     <div class="tituloPag">
-        <div class="coisarandom"></div>Faça o pagamento do plano escolhido!
-    <!-- Cadastre uma forma de pagamento-->
+        <div class="coisarandom"></div>Adicione um método de pagamento
     </div>
-
     <div class="wrapper">
-        <form action="../controller/gera_metodo.php" class="form-container">
+        <form action="../controller/gera_metodo.php" class="form-container" method="POST">
             <div class="box-form">
                 <div class="input-content">
                     <div class="box-input">
@@ -176,8 +178,6 @@ function geraPerfil()
             <button id="input-submit" type="submit" class="button-submit">Finalizar</button>
         </form>
     </div>
-
-    
     <footer>
         <div class="box-footer">
             <div class="footer-column">
@@ -218,6 +218,7 @@ function geraPerfil()
         <?php include('./css/footer.css'); ?>
         <?php include('./css/responsividade.css'); ?>
         <?php include('./css/general.css'); ?>
+        <?php include('./css/pagamento.css'); ?>
     </style>
     <script src="./js/pagamento.js"></script>
 </body>

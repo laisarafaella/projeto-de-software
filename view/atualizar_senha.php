@@ -1,8 +1,12 @@
 <?php
+// inicia a sessão e o buffer de saída
 session_start();
 ob_start();
+
+// inclui a conexão com o banco de dados
 include_once '../controller/conexaoSenha.php';
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -46,11 +50,15 @@ include_once '../controller/conexaoSenha.php';
     <div class="coisarandom"></div>Atualize sua senha!
   </div>
 
+  
     <?php
+    // obtém o token de recuperação de senha passado pela URL
     $chave = filter_input(INPUT_GET, 'chave', FILTER_DEFAULT);
 
 
+    /* verifica se a chave/token foi passada pela URL */
     if (!empty($chave)) {
+      // consulta o banco de dados para verificar se o token existe e está associado a um usuário
         $query_usuario = "SELECT id 
                             FROM usuarios 
                             WHERE token_reset =:token_reset  
@@ -59,13 +67,21 @@ include_once '../controller/conexaoSenha.php';
         $result_usuario->bindParam(':token_reset', $chave, PDO::PARAM_STR);
         $result_usuario->execute();
 
+        // se o token for válido, o processo de recuperação da senha continua
         if (($result_usuario) and ($result_usuario->rowCount() != 0)) {
+
+          // obtém o ID do usuário associado ao token
             $row_usuario = $result_usuario->fetch(PDO::FETCH_ASSOC);
+
+            // verifica se a senha foi enviada pelo formulário
             $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
             if (!empty($dados['SendNovaSenha'])) {
+              // criptografa a nova senha
                 $senha_usuario = password_hash($dados['senha'], PASSWORD_DEFAULT);
+                // limpa o token de recuperação após a atualização da senha
                 $recuperar_senha = 'NULL';
 
+                // atualiza a senha no banco e remove o token de recuperação
                 $query_up_usuario = "UPDATE usuarios
                         SET senha =:senha,
                         token_reset =:token_reset
@@ -76,29 +92,36 @@ include_once '../controller/conexaoSenha.php';
                 $result_up_usuario->bindParam(':token_reset', $recuperar_senha);
                 $result_up_usuario->bindParam(':id', $row_usuario['id'], PDO::PARAM_INT);
 
+                // verifica se a atualização foi bem-sucedida
                 if ($result_up_usuario->execute()) {
+                  // mensagem positiva
                     $_SESSION['msg'] = "<p style='color: green'>Senha atualizada com sucesso!</p>";
                     header("Location: login.php");
                 } else {
+                  // mensagem de erro
                     echo "<p style='color: #ff0000'>Erro: Tente novamente!</p>";
                 }
             }
         } else {
+          // mensagem de token invalido
             $_SESSION['msg_rec'] = "<p style='color: #ff0000'>Erro: Link inválido, solicite novo link para atualizar a senha!</p>";
             header("Location: recuperar_senha.php");
         }
     } else {
+      // mensagem se o token não estiver presente
         $_SESSION['msg_rec'] = "<p style='color: #ff0000'>Erro: Link inválido, solicite novo link para atualizar a senha!</p>";
         header("Location: recuperar_senha.php");
     }
 
     ?>
-    <form method="POST" action="">
+    <form method="POST" action="" class="formRecuperar">
         <?php
+        // verifica se a nova senha foi preenchida, para preencher o campo de senha com o valor atual
         $usuario = "";
         if (isset($dados['senha'])) {
             $usuario = $dados['senha'];
         } ?>
+        
         <label>Senha</label>
         <input type="password" name="senha" placeholder="Digite a nova senha" value="<?php echo $usuario; ?>"><br><br>
 

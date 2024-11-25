@@ -2,6 +2,7 @@
 
 class Usuario
 {
+    // atributos privados que armazenam informações sobre o usuário
     private $id;
     private $nome;
     private $sobrenome;
@@ -17,6 +18,7 @@ class Usuario
     private $idPlano;
     private $expiracao;
 
+    // cada setter recebe um valor como parâmetro e o atribui ao atributo correspondente da instância da classe
     public function setId($id) {$this->id = $id; return $this;}
     public function setNome($nome){$this->nome = $nome;}
     public function setSobrenome($sobrenome){$this->sobrenome = $sobrenome;}
@@ -32,6 +34,8 @@ class Usuario
     public function setIdPlano($idPlano){$this->idPlano = $idPlano;}
     public function setExpiracao($expiracao){$this->expiracao = $expiracao;}
 
+
+    // getters permite recuperar o valor de um atributo privado
     public function getId() {return $this->id;}
     public function getNome(){return $this->nome;}
     public function getSobrenome(){return $this->sobrenome;}

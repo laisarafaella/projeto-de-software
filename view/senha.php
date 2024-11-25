@@ -52,10 +52,14 @@ include_once '../controller/conexaoSenha.php';
   </div>
 
     <?php
+    // captura e filtra os dados do form
     $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
+    // verifica se o botão "Acessar" foi pressionado
     if (!empty($dados['SendLogin'])) {
         //var_dump($dados);
+
+        // consulta o banco para buscar infos do usuário com base no e-mail
         $query_usuario = "SELECT id, nome, sobrenome, email, senha, data_nascimento
                         FROM usuarios
                         WHERE email =:email  
@@ -67,11 +71,16 @@ include_once '../controller/conexaoSenha.php';
         if(($result_usuario) AND ($result_usuario->rowCount() != 0)){
             $row_usuario = $result_usuario->fetch(PDO::FETCH_ASSOC);
             //var_dump($row_usuario);
+
+            // compara a senha digitada com a senha criptografada armazenada
             if(password_verify($dados['senha'], $row_usuario['senha'])) {
+
+              // se as credenciais forem válidas: inicia uma sessão para armazenar infos do usuário
                 $_SESSION['id'] = $row_usuario['id'];
                 $_SESSION['nome'] = $row_usuario['nome'];
                 header("Location: perfil.php");
             }else{
+              // exibe uma mensagem de erro
                 $_SESSION['msg'] = "<p style='color: #ff0000'>Erro: Usuário ou senha inválida!</p>";
             }
         }else{
@@ -81,13 +90,16 @@ include_once '../controller/conexaoSenha.php';
         
     }
 
+    // exibe mensagens de erro ou sucesso armazenadas na sessão
+    // limpa a mensagem após exibir
+    
     if(isset($_SESSION['msg'])){
         echo $_SESSION['msg'];
         unset($_SESSION['msg']);
     }
     ?>
 
-    <form method="POST" action="">
+    <form method="POST" action="" class="formRecuperar">
         <label>Usuário</label>
         <input type="text" name="email" placeholder="Digite o usuário" value="<?php if(isset($dados['email'])){ echo $dados['email']; } ?>"><br><br>
 
@@ -99,8 +111,8 @@ include_once '../controller/conexaoSenha.php';
 
     <p class="forgot"> <a href="recuperar_senha.php">Esqueceu a senha?</a></p>
     
-    <br><br>
-    <!--Usuário: cesar@celke.com.br<br>
+    <!--<br><br>
+    Usuário: cesar@celke.com.br<br>
     Senha: 123456-->
 
 

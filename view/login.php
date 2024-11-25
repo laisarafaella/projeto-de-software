@@ -11,6 +11,7 @@
     <!-- <link rel="stylesheet" href="./css/login.css" /> -->
     <script src="./js/app.js" defer></script>
     <!-- Kit do fontawesome para icones -->
+    <!-- Tela de Login -->
     <script src="https://kit.fontawesome.com/b4d8cbf4fd.js" crossorigin="anonymous"></script>
     <title>Sportsync - Login</title>
 </head>
@@ -45,6 +46,7 @@
         <div class="tituloPag">
             <div class="coisarandom"></div>Login
         </div>
+        <!-- Chamndo o controlador-->
         <form action="../controller/loga_usuario.php" method="POST" class="formView">
             <label for="email">E-mail:</label>
             <input type="email" name="email" placeholder="" required><br>

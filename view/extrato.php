@@ -1,15 +1,27 @@
-<?php 
+<?php
 session_start();
 require_once '../controller/conexao.php';
+
+// exibe o histórico de entradas, saídas e o saldo total de pontos 
+
+
+// recuperar o perfil do usuário logado no banco
 function geraPerfil()
 {
     $id = $_SESSION['id'];
     // Interpolação de strings
+    // consulta para buscar todos os dados do usuário com o id obtido
     $sql = 'SELECT * FROM usuarios WHERE id = ' . $id;
+
+    // prepara e executa a consulta no banco
     $stmt = FabricaConexao::Conexao()->prepare($sql);
     $stmt->execute();
+    // retorna os resultados da consulta como um array de objetos
     return $stmt->fetchAll(PDO::FETCH_CLASS);
 }
+
+
+
 ?>
 
 
@@ -40,6 +52,7 @@ function geraPerfil()
             <li><a href="planos.php">Planos</a></li>
             <li><a href="parceiros.php">Parceiros</a></li>
             <?php
+            // verifica se o usuário está logado
             if ($_SESSION['usuario'] == null || $_SESSION['usuario'] == false) {
                 header("Location: login.php");
             } else {
@@ -60,6 +73,7 @@ function geraPerfil()
             <a href="planos.php">Planos</a>
             <a href="parceiros.php">Parceiros</a>
             <?php
+            // mesma verificação do usuário
             if ($_SESSION['usuario'] == null || $_SESSION['usuario'] == false) {
                 header("Location: login.php");
             } else {
@@ -83,7 +97,25 @@ function geraPerfil()
                     <span>Entradas</span>
                     <img src="./assets/positive.svg" alt="Entradas Img" />
                 </h3>
-                <p id="positive">Pontos</p>
+                <?php
+                // consulta para buscar todas as entradas (gastos positivos) do usuário
+                $sql = 'SELECT gasto FROM extrato WHERE idUsuario_fk = ' . $_SESSION['id'] . ' and tipo_gasto = "pontos" and gasto > 0';
+                $stmt = FabricaConexao::Conexao()->prepare($sql);
+                $stmt->execute();
+                $linhas2 = $stmt->fetchAll(PDO::FETCH_CLASS);
+
+                $sum = 0;
+
+                // soma todos os valores de entrada encontrados
+                foreach ($linhas2 as $linha) {
+                    $sum += $linha->gasto;
+                }
+
+                // exibe o total de pontos ganhos
+                echo '<p id="positive">' . $sum . ' Pontos</p>';
+
+                ?>
+
             </div>
 
             <div class="card-historico">
@@ -91,14 +123,43 @@ function geraPerfil()
                     <span>Saídas</span>
                     <img src="./assets/negative.svg" alt="Saídas Img" />
                 </h3>
-                <p id="negative">Pontos</p>
+                <?php
+                // consulta para buscar todas as saídas (gastos negativos) do usuário
+                $sql = 'SELECT gasto FROM extrato WHERE idUsuario_fk = ' . $_SESSION['id'] . ' and tipo_gasto = "pontos" and gasto < 0';
+                $stmt = FabricaConexao::Conexao()->prepare($sql);
+                $stmt->execute();
+                $linhas2 = $stmt->fetchAll(PDO::FETCH_CLASS);
+
+                $sum = 0;
+
+                // soma todos os valores de saída encontrados
+                foreach ($linhas2 as $linha) {
+                    $sum += $linha->gasto;
+                }
+
+                // exibe o total de pontos gastos (convertendo o valor negativo para positivo)
+                echo '<p id="negative">' . $sum * (-1) . ' Pontos</p>';
+
+                ?>
             </div>
 
             <div class="card-historico card-total">
                 <h3>
                     <span>Total</span>
                 </h3>
-                <p id="total">Pontos</p>
+                <?php
+                // consulta para buscar o total de pontos do usuário
+                $sql = 'SELECT pontos FROM usuarios WHERE id = ' . $_SESSION['id'];
+                $stmt = FabricaConexao::Conexao()->prepare($sql);
+                $stmt->execute();
+                $linhas3 = $stmt->fetchAll(PDO::FETCH_CLASS);
+
+                // exibe o total de pontos
+                foreach ($linhas3 as $linha) {
+                    echo '<p id="total">' . $linha->pontos . ' Pontos</p>';
+                }
+                
+                ?>
             </div>
         </section>
 
@@ -109,11 +170,31 @@ function geraPerfil()
                     <th>Valor</th>
                     <th>Data</th>
                 </thead>
-                <tr>
-                    <td>Doou para Sofia Pomes</td>
-                    <td>2000 pontos</td>
-                    <td>14/11/2024</td>
-                </tr>
+                <?php
+                // consulta para buscar todas as transações do usuário
+                $sql = 'SELECT * FROM extrato WHERE idUsuario_fk = ' . $_SESSION['id'];
+                $stmt = FabricaConexao::Conexao()->prepare($sql);
+                $stmt->execute();
+                $linhas = $stmt->fetchAll(PDO::FETCH_CLASS);
+
+                // loop para exibir cada transação na tabela
+                foreach ($linhas as $linha) {
+                    echo "<tr>";
+                    echo "<td>" . $linha->nome_extrato . "</td>";
+
+                    // exibe o valor da transação
+                    if ($linha->tipo_gasto == 'pontos') {
+                        echo "<td>" . intval($linha->gasto) . " pontos</td>";
+                    } else {
+                        echo "<td>R$" . $linha->gasto . "</td>";
+                    }
+
+                    // exibe a data da transação no formato dia - mes - ano
+                    echo "<td>" . date('d/m/Y', strtotime($linha->data_acao)) . "</td>";
+                    echo "</tr>";
+                }
+
+                ?>
             </table>
         </section>
     </main>
@@ -153,7 +234,7 @@ function geraPerfil()
             <p>Sportsync © 2024 - Todos os direitos reservados.</p>
         </div>
     </footer>
-    
+
     <style type="text/css" href="index.css">
         <?php include('./css/header.css'); ?>
         <?php include('./css/extrato.css'); ?>

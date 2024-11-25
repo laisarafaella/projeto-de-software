@@ -1,55 +1,28 @@
 <?php
-header('Content-Type: text/html; charset=utf-8');
 session_start();
-include_once '../controller/DAOUsuario.php';
-include_once '../controller/conexao.php';
-
-
-// exibir um cupom gerado após a validação dos pontos do usuário e o plano correspondente
-
+require_once '../controller/conexao.php';
 
 // recupera o perfil do usuário logado no banco
 function geraPerfil()
 {
     $id = $_SESSION['id'];
-    // Interpolação de strings
-    // SQL para selecionar os dados do usuário com base no id
     $sql = 'SELECT * FROM usuarios WHERE id = ' . $id;
     $stmt = FabricaConexao::Conexao()->prepare($sql);
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_CLASS);
 }
 
-// array que define os valores em pontos necessários para cada tipo de cupom
-$valores = array(200, 300, 450, 520, 700, 800);
-
-// armazenará o valor do desconto a ser exibido
-$desconto = "";
-
-// determinar o desconto com base no id do cupom armazenado na sessão
-switch ($_SESSION['idCupom']) {
-    case 1:
-        $desconto = "5%";
-        break;
-    case 2:
-        $desconto = "7%";
-        break;
-    case 3:
-        $desconto = "10%";
-        break;
-    case 4:
-        $desconto = "15%";
-        break;
-    case 5:
-        $desconto = "20%";
-        break;
-    case 6:
-        $desconto = "30%";
-        break;
+// verifica se o plano foi escolhido e armazena na sessão
+if(!isset($_SESSION['planoEscolhido'])) {
+    // salva o plano enviado via POST
+    $_SESSION['planoEscolhido'] = $_POST['idplano'];
 }
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -57,12 +30,14 @@ switch ($_SESSION['idCupom']) {
     <link rel="stylesheet" href="./css/general.css" />
     <link rel="stylesheet" href="./css/footer.css" />
     <link rel="stylesheet" href="./css/responsividade.css" />
-    <script src="./js/app.js" defer></script>
+    <script src="./js/app.js"></script>
     <!-- Kit do fontawesome para ícones -->
     <script src="https://kit.fontawesome.com/b4d8cbf4fd.js" crossorigin="anonymous"></script>
-    <title>SportSync - Cupom</title>
+    <title>SportSync - Escolher Método</title>
 </head>
+
 <body class="inter">
+
     <header>
         <ul class="header">
             <li class="logo jockey-one-regular"><a href="../index.php">SPORTSYNC</a></li>
@@ -71,10 +46,11 @@ switch ($_SESSION['idCupom']) {
             <li><a href="planos.php">Planos</a></li>
             <li><a href="parceiros.php">Parceiros</a></li>
             <?php
-            // verificacao do usuario logado
+            // verifica se o usuário está logado
             if ($_SESSION['usuario'] == null || $_SESSION['usuario'] == false) {
                 header("Location: login.php");
             } else {
+                // recupera o perfil e exibe o nome, se estiver logado
                 $linhas = geraPerfil();
                 foreach ($linhas as $linha) {
                     echo "<li><b><a href='perfil.php'>" . $linha->nome . "</a></b></li>";
@@ -92,7 +68,7 @@ switch ($_SESSION['idCupom']) {
             <a href="planos.php">Planos</a>
             <a href="parceiros.php">Parceiros</a>
             <?php
-            // a mesma verificacao
+            // mesma verificacao
             if ($_SESSION['usuario'] == null || $_SESSION['usuario'] == false) {
                 header("Location: login.php");
             } else {
@@ -104,49 +80,47 @@ switch ($_SESSION['idCupom']) {
             ?>
         </div>
     </header>
-    <?php
-    foreach ($linhas as $linha) ?>
     <div class="tituloPag">
-        <div class="coisarandom"></div>Sucesso!
+        <div class="coisarandom"></div>Minhas formas de pagamento
     </div>
+    <main class="my-payments">
+        <form class="container-cartoes" method="POST" action="./finalizar.php">
+            <?php
+            // busca os métodos de pagamento do usuário no banco
+            $sql = 'SELECT * FROM metodos_pagamento WHERE idUsuario_fk = ' . $_SESSION['id'];
+            $stmt = FabricaConexao::Conexao()->prepare($sql);
+            $stmt->execute();
+            $linhas3 = $stmt->fetchAll(PDO::FETCH_CLASS);
 
-    <main class="main-cupom">
-        <section class="cupom-container">
-            <div class="cimaCupom">
-                <div class="containerCupom">
-                    <div class="voucher">
-                        <div class="dotted">
-                            <div class="elipse"></div>
-                        </div>
-                        <div class="content">
-                            <div class="discount"><?php echo $desconto ?> </div>
-                            <div class="discount-info">de desconto</div>
-                            <div class="description">em lojas parceiras</div>
-                            <div class="info-points">
-                                <div class="tape">Use <?php echo $valores[$_SESSION['idCupom'] - 1] ?> pontos para esse voucher.</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="cupom-info">
-                    <h2>Aqui está o seu cupom. Aproveite!</h2>
-                    <p><?php echo $desconto ?> de desconto em lojas parceiras.</p>
-                </div>
+            // loop para exibir cada método de pagamento
+            foreach ($linhas3 as $linha) {
+                echo '<button class="cartao-botao" value="'. $linha->idMetodo .'" name="metodoescolhido">';
+                echo '    <div class="bandeira">';
+                // verifica a bandeira do cartão com base no número
+                if (substr($linha->numero_cartao,0,1) == '4') {
+                    echo '<img src="./assets/visa.svg">'; // visa
+                } else if (intval(substr($linha->numero_cartao,0,2)) >= 51 and intval(substr($linha->numero_cartao,0,2)) <= 55) {
+                    echo '        <img src="./assets/mastercard.svg">'; // mastercard
+                }
+                echo '    </div>';
+                // exibe detalhes do cartão
+                echo '    <div class="conteudo-cartao">';
+                echo '        <div class="numero-cartao">**** **** **** '. $linha->ultimos_digitos .'</div>';
+                echo '        <div class="titulo-validade">';
+                echo '            <div class="titular">'. $linha->titular .'</div>';
+                echo '            <div class="validade inter">'. $linha->data_validade .'</div>';
+                echo '        </div>';
+                echo '    </div>';
+                echo '</button>';
+            }
+            ?>
+            <div class="add">
+                <a href="./pagamento.php">
+                    <button>+</button>
+                </a>
             </div>
-            <div class="baixoCupom">
-                <div class="codigo-container">
-                    <input type="text" class="codigo-cupom" value="<?php echo $_SESSION['codigoCupom'] ?>" id="codigocupom" readonly>
-                    <button id="copiarcodigo"><img src="./assets/copy.svg" alt="Copiar código"></button>
-                    <a href="#" class="problema-link">Problemas com o código?</a>
-                </div>
-                <div class="btns">
-                    <a href="gerar_cupom.php"><button class="cupom-btn">Gerar novo cupom</button></a>
-                    <button class="cupom-btn"><a href="./meus_cupons.php">Ver meus cupons</a></button>
-                </div>
-            </div>
-        </section>
+        </form>
     </main>
-    
     <footer>
         <div class="box-footer">
             <div class="footer-column">
@@ -161,7 +135,7 @@ switch ($_SESSION['idCupom']) {
                 <h3>Recursos</h3>
                 <ul>
                     <li><a href="servicos.php">Serviços</a></li>
-                    <li><a href="planos.php">Seja um colaborador</a></li>
+                    <li><a href="planos.php">Seja um sócio</a></li>
                     <li><a href="parceiros.php">Parceiros</a></li>
                 </ul>
             </div>
@@ -180,17 +154,15 @@ switch ($_SESSION['idCupom']) {
             <p>Sportsync © 2024 - Todos os direitos reservados.</p>
         </div>
     </footer>
+
     <style type="text/css" href="index.css">
         <?php include('./css/header.css'); ?>
+        <?php include('./css/detalhes.css'); ?>
+        <?php include('./css/footer.css'); ?>
         <?php include('./css/responsividade.css'); ?>
-        <?php include('./css/cupom.css'); ?>
+        <?php include('./css/general.css'); ?>
+        <?php include('./css/metodos.css'); ?>
     </style>
-    <script>
-        document.getElementById('copiarcodigo').addEventListener('click', clipboardCopy);
-        async function clipboardCopy() {
-            let text = document.querySelector("#codigocupom").value;
-            await navigator.clipboard.writeText(text);
-        }
-    </script>
 </body>
+
 </html>

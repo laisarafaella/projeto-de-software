@@ -1,28 +1,41 @@
 <?php
 header('Content-Type: text/html; charset=utf-8');
 session_start();
+
+// inclui arquivos de classes e banco
 include_once '../controller/DAONfe.php';
 include_once '../controller/DAOUsuario.php';
 include_once '../controller/conexao.php';
 
+// função para buscar nfes do usuario logado
 function trazNFE()
 {
+  // localiza nfes vinculadas ao id do usuario
   $nfeDAO = new DAONfe();
   return $nfeDAO->LocalizarNfes($_SESSION['id']);
 }
 
+
+// função para buscar infos do usuário logado
 function trazUser()
 {
+  // localiza o usuário pelo id dele
   $nfeUser = new DAOUsuario();
   return $nfeUser->Localizar($_SESSION['id']);
 }
 
+
+// armazenando as nfes e infos do usuário
 $linhas = trazNFE();
 $linhas2 = trazUser();
 
+
+// função para pegar infos do perfil do usuário
 function geraPerfil() {
     $id = $_SESSION['id'];
     // Interpolação de strings
+
+    // consulta o banco para obter infos do usuário
     $sql = 'SELECT id, nome, sobrenome, email, data_nascimento FROM usuarios WHERE id = ' . $id;
     $stmt = FabricaConexao::Conexao()->prepare($sql);
     $stmt->execute();
@@ -56,6 +69,7 @@ $contador = 0;
       <li><a href="planos.php">Planos</a></li>
       <li><a href="parceiros.php">Parceiros</a></li>
       <?php
+      // verifica se o usuário está logado
       if ($_SESSION['usuario'] == null || $_SESSION['usuario'] == false) {
         header("Location: login.php");
       } else {
@@ -77,6 +91,7 @@ $contador = 0;
         <a href="planos.php">Planos</a>
         <a href="parceiros.php">Parceiros</a>
         <?php
+        // verifica se o usuário está logado
         if ($_SESSION['usuario'] == null || $_SESSION['usuario'] == false) {
           header("Location: login.php");
         } else {
@@ -95,6 +110,8 @@ $contador = 0;
       <div class="coisarandom"></div>
       Minhas NF-E's
     </div>
+
+      <!-- exibição das nfes do usuario -->
     <?php foreach ($linhas as $linha) {
       $contador++;
       echo '<div class="caixa">';
@@ -104,6 +121,8 @@ $contador = 0;
       echo '<button class="mais" onclick="toggleDetalhes('.$contador.')">Mais Detalhes</button>';
       echo '</div>';
       echo '</div>';
+
+      // exibe os detalhes ao clicar
       echo '<div class="detalhes-nfe" id="detalhes-'.$contador.'">';
       echo '<p><strong>Chave de Acesso:&nbsp</strong>' . $linha->chave_acesso . '</p>';
       echo '<p><strong>Nome/razão social:&nbsp</strong>' . $linha->razao_social . '</p>';
@@ -117,6 +136,9 @@ $contador = 0;
       // echo '<p><strong>CPF:</strong>' . $linha2->cpf . '</p>';
       // echo '</div> ';
       // echo '<p class="pontos-atuais">Seus pontos atuais: ' . $linhas2[10] . ' pontos</p>';
+
+
+      // exibe os pontos do usuário
       foreach ($linhas2 as $linha2)
       {
         echo '<p class="pontos-atuais">Seus pontos atuais: ' . $linha2->pontos . ' pontos</p>';
@@ -161,6 +183,8 @@ $contador = 0;
     </footer>
   <script>
 
+
+  // função para alternar visibilidade dos detalhes da nfe
     function toggleDetalhes(id) {
       const detalhes = document.getElementById('detalhes-' + id);
       detalhes.style.display = detalhes.style.display === 'block' ? 'none' : 'block';

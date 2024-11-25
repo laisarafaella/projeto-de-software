@@ -1,6 +1,8 @@
 <?php 
 session_start();
 require_once '../controller/conexao.php';
+
+// recupera o perfil do usuário logado no banco
 function geraPerfil()
 {
     $id = $_SESSION['id'];
@@ -38,6 +40,7 @@ function geraPerfil()
             <li><a href="planos.php">Planos</a></li>
             <li><a href="parceiros.php">Parceiros</a></li>
             <?php
+            // verificando se o usuario está logado para realizar tal acao
             if ($_SESSION['usuario'] == null || $_SESSION['usuario'] == false) {
                 header("Location: login.php");
             } else {
@@ -58,6 +61,7 @@ function geraPerfil()
             <a href="planos.php">Planos</a>
             <a href="parceiros.php">Parceiros</a>
             <?php
+            // verificando se o usuario está logado
             if ($_SESSION['usuario'] == null || $_SESSION['usuario'] == false) {
                 header("Location: login.php");
             } else {
@@ -76,25 +80,22 @@ function geraPerfil()
     <main>
         <p class="subtitulo">Com seu apoio, nossos atletas podem ir ainda mais longe!</p>
         <div class="conteudo">
-            <form class="donationForm">
+            <form class="donationForm" action="../controller/geraDoacao.php" method="POST">
                 <div class="form-sections-donation">
                     <label class="inputCapsule4">
                         <b>Doar para:</b><br>
                         <select id="athlete" name="athlete" class="inputDoacao" required>
                             <option value="">Selecione um atleta</option>
-                            <option value="sofia">Sofia Pomes</option>
-                            <option value="paulo">Paulo Victor</option>
-                            <option value="gabriella">Gabriella Navarro</option>
+                            <option value="1">Sofia Pomes</option>
+                            <option value="2">Paulo Victor</option>
+                            <option value="3">Gabriella Navarro</option>
                         </select>
                     </label>
-
                     <label class="inputCapsule4">
                         <b>Quantidade de Pontos:</b><br>
-                        <input type="text" id="points" name="points" class="inputDoacao" min="1" required
-                            placeholder="100 pontos">
+                        <input type="number" id="points" name="points" class="inputDoacao" min="1" required placeholder="100 pontos">
                     </label>
                 </div>
-
                 <div class="form-button">
                     <button type="submit" class="btnDonate">Doe Agora</button>
                 </div>

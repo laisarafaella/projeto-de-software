@@ -1,7 +1,11 @@
 <?php
 
+//definição de uma classe chamada MetodoPagamento, que modela os dados de um método de pagamento
+// atributos e métodos para acessar e modificar as informações do método de pagamento
+
 class MetodoPagamento
 {
+    // atributos privados
     private $idMetodo;
     private $apelido;
     private $titular;
@@ -11,11 +15,14 @@ class MetodoPagamento
     private $cvv;
     private $idUsuario;
 
+    // getter é um método que permite obter o valor de um atributo
     public function getIdMetodo()
     {
+        // this para acessar os dados ou métodos dessa instância do objeto (objeto atual da classe)
         return $this->idMetodo;
     }
 
+    // setter é um método que permite definir o valor de um atributo
     public function setIdMetodo($idMetodo)
     {
         $this->idMetodo = $idMetodo;

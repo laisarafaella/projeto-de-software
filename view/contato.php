@@ -40,7 +40,7 @@ function geraPerfil()
       <li><a href="planos.php">Planos</a></li>
       <li><a href="parceiros.php">Parceiros</a></li>
       <?php
-
+      // verificacao se o usuario está logado
             if(!isset($_SESSION['usuario']))
                 {
                 echo "<li><a href='cadastro_usuario.php'>Cadastrar</a></li>";
@@ -69,7 +69,7 @@ function geraPerfil()
         <a href="planos.php">Planos</a>
         <a href="parceiros.php">Parceiros</a>
         <?php
-
+        // a mesma vericacao
             if(!isset($_SESSION['usuario']))
                 {
                 echo "<li><a href='cadastro_usuario.php'>Cadastrar</a></li>";
@@ -127,7 +127,7 @@ function geraPerfil()
         <div class="textarea-container">
           <label class="inputCapsule-contact">
             <b>Mensagem:</b> <br>
-            <textarea name="message" class="input textarea" rows="2" required></textarea>
+            <textarea name="message" class="input textarea" rows="2" cols="100" required></textarea>
           </label>
         </div>
 

@@ -1,13 +1,20 @@
 <?php 
 session_start();
 require_once '../controller/conexao.php';
+include_once '../controller/DAOUsuario.php';
 
+// obtém o id do usuário logado a partir da sessão
 $id = $_SESSION['id'];
 // Interpolação de strings
+
+// consulta os cupons vinculados ao usuário logado no banco
 $sql = 'SELECT * FROM cupons WHERE idUsuario_fk = ' . $_SESSION['id'];
 $stmt = FabricaConexao::Conexao()->prepare($sql);
 $stmt->execute();
+
+// busca todas as linhas retornadas pela consulta como objetos
 $linhas = $stmt->fetchAll(PDO::FETCH_CLASS);
+
 
 ?>
 
@@ -35,7 +42,14 @@ $linhas = $stmt->fetchAll(PDO::FETCH_CLASS);
             <li><a href="ranking.php">Ranking</a></li>
             <li><a href="planos.php">Planos</a></li>
             <li><a href="parceiros.php">Parceiros</a></li>
-            <li><a href="">Não consegui colocar aquele código aq</a></li>
+            <?php
+            // verifica se o usuário está logado e exibe seu nome ou redireciona para login
+            if ($_SESSION['usuario'] == null || $_SESSION['usuario'] == false) {
+                header("Location: login.php");
+            } else {
+                echo "<li><b><a href='perfil.php'>" . $_SESSION['nomeUsuario'] . "</a></b></li>";
+            }
+            ?>
         </ul>
         <ul class="mheader">
             <li class="logo jockey-one-regular"><a href="../index.php">SPORTSYNC</a></li>
@@ -46,36 +60,63 @@ $linhas = $stmt->fetchAll(PDO::FETCH_CLASS);
             <a href="ranking.php">Ranking</a>
             <a href="planos.php">Planos</a>
             <a href="parceiros.php">Parceiros</a>
+            <?php
+            // verifica se o usuário está logado e exibe seu nome ou redireciona para login
+            if ($_SESSION['usuario'] == null || $_SESSION['usuario'] == false) {
+                header("Location: login.php");
+            } else {
+                echo "<li><b><a href='perfil.php'>" . $_SESSION['nomeUsuario'] . "</a></b></li>";
+            }
+            ?>
         </div>
     </header>
     <div class="tituloPag">
         <div class="coisarandom"></div>Meus cupons gerados!
     </div>
     
-    <table border="1" class="container-meusCupons">
+    <!-- tabela para exibir os cupons do usuário -->
+    <table border="0" class="container-meusCupons">
         <tr>
             <th>Apelido</th>
             <th>Desconto</th>
+            <th>Data de Emissão</th>
             <th>Validade</th>
             <th>Código</th>
         </tr>
     <?php 
+    // itera sobre os cupons do usuário e exibe cada um na tabela
         foreach ($linhas as $row) {
+            // calcula a validade do cupom em dias
             $validade = new DateTime($row->data_expiracao);
             $today = new DateTime();
             $interval = $today->diff($validade);
-            $daysRemaining = $interval->format('%a');
+            $daysRemaining = $interval->format('%a') + 1;
 
+
+            // calcula o intervalo entre a data de emissão e a data atual
+            $data_inicio = new DateTime($row->data_emissao);
+            $data_fim = new DateTime();
+            $dateInterval = $data_inicio->diff($data_fim);
+
+            // preenche uma linha da tabela para cada cupom
             echo "<tr>";
             echo "<td>" . $row->apelido . "</td>";
-            echo "<td>" . $row->desconto . "</td>";
-            echo "<td>" . $daysRemaining . "</td>";
+            echo "<td>" . $row->desconto * 100 . "%</td>";
+            echo "<td>" . date('d/m/Y', strtotime($row->data_emissao)) . "</td>";
+
+            // verifica se o cupom está expirado
+            if ($dateInterval->days > 30) {
+                echo "<td>Expirado!</td>";
+            }
+            else {
+                echo "<td>" . $daysRemaining . " dias restantes</td>";
+            }
             echo "<td>" . $row->codigo_cupom . "</td>";
             echo "</tr>";
         }
     ?>
     </table>
-    <button class="btnVoltar"><a href="./perfil.php">Voltar</a></button>
+    <a href="./perfil.php"><button class="btnVoltar">Voltar</button></a>
     
 
     <footer>

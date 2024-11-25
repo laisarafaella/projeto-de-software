@@ -1,15 +1,26 @@
-<?php 
+<?php
 session_start();
 require_once '../controller/conexao.php';
+
+
+// função para obter os dados do perfil do usuário
 function geraPerfil()
 {
-    $id = $_SESSION['id'];
-    // Interpolação de strings
-    $sql = 'SELECT * FROM usuarios WHERE id = ' . $id;
-    $stmt = FabricaConexao::Conexao()->prepare($sql);
-    $stmt->execute();
-    return $stmt->fetchAll(PDO::FETCH_CLASS);
+  $id = $_SESSION['id'];
+  // Interpolação de strings
+  $sql = 'SELECT * FROM usuarios WHERE id = ' . $id;
+  $stmt = FabricaConexao::Conexao()->prepare($sql);
+  $stmt->execute();
+  return $stmt->fetchAll(PDO::FETCH_CLASS);
 }
+
+
+// verifica se a variável de sessão 'planoEscolhido' está setada se estiver remove ela
+if(isset($_SESSION['planoEscolhido'])) {
+  unset($_SESSION['planoEscolhido']);
+}
+
+
 ?>
 
 
@@ -39,96 +50,94 @@ function geraPerfil()
       <li><a href="planos.php">Planos</a></li>
       <li><a href="parceiros.php">Parceiros</a></li>
       <?php
-        if(!isset($_SESSION['usuario']))
-          {
-            echo "<li><a href='cadastro_usuario.php'>Cadastrar</a></li>";
-            echo "<li class='login'><a href='login.php'>Login</a></li>";
-          }
-          else {
-            if ($_SESSION['usuario'] == null || $_SESSION['usuario'] == false) {
-              echo "<li><a href='cadastro_usuario.php'>Cadastrar</a></li>";
-              echo "<li class='login'><a href='login.php'>Login</a></li>";
-          } else {
-            $linhas = geraPerfil();
-            foreach ($linhas as $linha) {
+      // mostra opções de cadastro ou login se o usuário não estiver logado
+      if (!isset($_SESSION['usuario'])) {
+        echo "<li><a href='cadastro_usuario.php'>Cadastrar</a></li>";
+        echo "<li class='login'><a href='login.php'>Login</a></li>";
+      } else {
+        // mostra o nome do usuário logado como link para o perfil
+        if ($_SESSION['usuario'] == null || $_SESSION['usuario'] == false) {
+          echo "<li><a href='cadastro_usuario.php'>Cadastrar</a></li>";
+          echo "<li class='login'><a href='login.php'>Login</a></li>";
+        } else {
+          $linhas = geraPerfil();
+          foreach ($linhas as $linha) {
             echo "<li><b><a href='perfil.php'>" . $linha->nome . "</a></b></li>";
-                }
-              }
           }
-        ?>
+        }
+      }
+      ?>
     </ul>
-      <ul class="mheader">
-          <li class="logo jockey-one-regular"><a href="../index.php">SPORTSYNC</a></li>
-      </ul>
-      <img onclick="menu()" class="dropbtn menu" src="./assets/bars-solid.svg" alt="Menu">
-      <div id="dropdown" class="dropdown-content">
-        <a href="../index.php">Home</a>
-        <a href="ranking.php">Ranking</a>
-        <a href="planos.php">Planos</a>
-        <a href="parceiros.php">Parceiros</a>
-        <?php
-        if(!isset($_SESSION['usuario']))
-          {
-            echo "<li><a href='cadastro_usuario.php'>Cadastrar</a></li>";
-            echo "<li class='login'><a href='login.php'>Login</a></li>";
-          }
-          else {
-            if ($_SESSION['usuario'] == null || $_SESSION['usuario'] == false) {
-              echo "<li><a href='cadastro_usuario.php'>Cadastrar</a></li>";
-              echo "<li class='login'><a href='login.php'>Login</a></li>";
-          } else {
-            $linhas = geraPerfil();
-            foreach ($linhas as $linha) {
+    <ul class="mheader">
+      <li class="logo jockey-one-regular"><a href="../index.php">SPORTSYNC</a></li>
+    </ul>
+    <img onclick="menu()" class="dropbtn menu" src="./assets/bars-solid.svg" alt="Menu">
+    <div id="dropdown" class="dropdown-content">
+      <a href="../index.php">Home</a>
+      <a href="ranking.php">Ranking</a>
+      <a href="planos.php">Planos</a>
+      <a href="parceiros.php">Parceiros</a>
+      <?php
+      // a mesma verificacao de cima
+      if (!isset($_SESSION['usuario'])) {
+        echo "<li><a href='cadastro_usuario.php'>Cadastrar</a></li>";
+        echo "<li class='login'><a href='login.php'>Login</a></li>";
+      } else {
+        if ($_SESSION['usuario'] == null || $_SESSION['usuario'] == false) {
+          echo "<li><a href='cadastro_usuario.php'>Cadastrar</a></li>";
+          echo "<li class='login'><a href='login.php'>Login</a></li>";
+        } else {
+          $linhas = geraPerfil();
+          foreach ($linhas as $linha) {
             echo "<li><b><a href='perfil.php'>" . $linha->nome . "</a></b></li>";
-                }
-              }
           }
-        ?>
-      </div>
+        }
+      }
+      ?>
+    </div>
   </header>
+
+
   <div class="tituloPag">
     <div class="coisarandom"></div>
     Faça parte do nosso time de sócios!
   </div>
-
-
   <div class="container-cards">
     <div class="card">
-        <img src="./assets/bicycle.svg" alt="Icon do Plano Atleta" class="icon">
-        <!--<i class="fa-light fa-person-biking icon-top"></i>-->
-        <h2>PLANO ATLETA</h2>
-        <hr>
-        <ul class="beneficios">
-            <li>Descontos em compras: De 10% à 20%</li>
-            <li>Multiplicador de pontos: 0.8x</li>
-            <!--<li>Conteúdo Exclusivo: Nenhum</li>-->
-            <li>Valor mensal: R$14,90</li>
-            <li>Valor anual: R$120,00</li>
-        </ul>
-        <hr>
-        <button><a href="pagamento.php">Seja sócio por R$14,90</a></button>
-        <p id="anualmente">Ou pague R$120,00 anualmente</p>
-        <p id="termos">Leia os <span id="destaque3">Termos de compra</span> ao adquirir o plano.</p>
+      <img src="./assets/volleyball.svg" alt="Icon do Plano Esportista" class="icon">
+      <h2>PLANO ESPORTISTA</h2>
+      <hr>
+      <ul class="beneficios">
+        <li>Descontos em compras: De 10% à 15%</li>
+        <li>Multiplicador de pontos: 0.6x</li>
+        <li>Valor mensal: R$19,90</li>
+        <li>Valor anual: R$199,90</li>
+      </ul>
+      <hr>
+      <form action="./escolher_metodo.php" method="POST">
+        <button value="2" name="idplano">Seja sócio por R$19,90</button>
+      </form>
+      <p id="anualmente">Ou pague R$199,90 anualmente</p>
+      <p id="termos">Leia os <span id="destaque3">Termos de compra</span> ao adquirir o plano.</p>
     </div>
-
     <div class="card">
-        <img src="./assets/volleyball.svg" alt="Icon do Plano Esportista" class="icon">
-        <h2>PLANO ESPORTISTA</h2>
-        <hr>
-        <ul class="beneficios">
-            <li>Descontos em compras: De 20% à 30%</li>
-            <li>Multiplicador de pontos: 1.2x</li>
-            <li>Conteúdo Exclusivo: Sorteio de Kits</li>
-            <li>Valor mensal: R$17,90</li>
-            <li>Valor anual: R$199,00</li>
-        </ul>
-        <hr>
-        <button><a href="pagamento.php">Seja sócio por R$17,90</a></button>
-        <p id="anualmente">Ou pague R$199,00 anualmente</p>
-        <p id="termos">Leia os <span id="destaque3">Termos de compra</span> ao adquirir o plano.</p>
+      <img src="./assets/bicycle.svg" alt="Icon do Plano Atleta" class="icon">
+      <h2>PLANO ATLETA</h2>
+      <hr>
+      <ul class="beneficios">
+        <li>Descontos em compras: De 20% à 30%</li>
+        <li>Multiplicador de pontos: 0.8x</li>
+        <li>Valor mensal: R$24,90</li>
+        <li>Valor anual: R$249,90</li>
+      </ul>
+      <hr>
+      <form action="./escolher_metodo.php" method="POST">
+        <button value="3" name="idplano">Seja sócio por R$24,90</button>
+      </form>
+      <p id="anualmente">Ou pague R$249,90 anualmente</p>
+      <p id="termos">Leia os <span id="destaque3">Termos de compra</span> ao adquirir o plano.</p>
     </div>
   </div>
-        
 
 
   <footer>
@@ -166,12 +175,13 @@ function geraPerfil()
   </footer>
 
   <style type="text/css" href="index.css">
-        <?php include('./css/header.css'); ?>
-        <?php include('./css/planos.css'); ?>
-        <?php include('./css/general.css'); ?>
-        <?php include('./css/footer.css'); ?>
-        <?php include('./css/responsividade.css'); ?>
-    </style>
+    <?php include('./css/header.css'); ?>
+    <?php include('./css/planos.css'); ?>
+    <?php include('./css/general.css'); ?>
+    <?php include('./css/footer.css'); ?>
+    <?php include('./css/responsividade.css'); ?>
+  </style>
 
 </body>
+
 </html>
