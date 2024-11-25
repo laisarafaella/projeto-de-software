@@ -10,6 +10,7 @@ include './controller/conexao.php';
 function geraPerfil()
 {
     // recupera o id e cria uma query para resgatar o user com tal id
+
     $id = $_SESSION['id'];
     $sql = 'SELECT * FROM usuarios WHERE id = ' . $id;
     $stmt = FabricaConexao::Conexao()->prepare($sql);
